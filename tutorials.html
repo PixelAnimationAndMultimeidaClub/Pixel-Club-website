@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorials | Animation & Multimedia Club</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@500;700&family=Golos+Text:wght@400..900&family=Press+Start+2P&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tutorials.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <!-- Logo and Brand Name -->
+      <a href="index.html" class="navbar-brand">
+        <!-- Replace logo.png with your actual logo file -->
+        <img src="images/pixel-logo.svg" alt="Logo" class="brand-logo">
+        <div class="brand-text">
+          <span class="brand-title">pixel</span>
+          <span class="brand-subtitle">animation & multimedia club</span>
+        </div>
+      </a>
+      
+      <!-- Hamburger Button for Mobile -->
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="navbar-nav" id="navbar-nav">
+        <a href="index.html" >Home</a>
+        <a href="about.html">About</a>
+        
+        <!-- Explore Dropdown -->
+        <div class="dropdown">
+          <a class="active dropdown-toggle" id="explore-btn">Explore ▼</a>
+          <div class="dropdown-menu">
+            <a href="animation.html">Animation</a>
+            <a href="tutorials.html" class="active">Video</a>
+            <a href="product.html">Product</a>
+          </div>
+        </div>
+        
+        <a href="event.html">Event</a>
+        <a href="blog.html">Blog</a>
+        <a href="mentor.html">Mentor</a>
+      </div>
+    </div>
+    <!-- Scrub Bar Indicator -->
+    <div class="scrub-bar"><div class="scrub-fill" id="scrubFill"></div></div>
+  </nav>
+
+  <!-- Hero Section (Dark Section) -->
+<section class="section section-dark hero-section">
+  <div class="hero-bg-overlay"></div>
+  <div class="container">
+    <span class="label-mono">Learning Hub</span>
+    <h1>Video Editing &<br>Post-Production Tutorials</h1>
+    <p>Master editing workflows, color grading, visual effects, and audio mastering across Premiere Pro, After Effects, and DaVinci Resolve.</p>
+  </div>
+</section>
+
+  <!-- Main Page Content (Change this per page) -->
+  <main class="section">
+    <!-- Tutorials Gallery Section (Light Section) -->
+  <main class="section">
+    <div class="container">
+
+        <!-- Search & Filter Row -->
+<div class="tutorial-search-filter-row" style="display: flex; align-items: center; gap: 16px; margin-top: 24px; margin-bottom: 12px; flex-wrap: wrap;">
+  
+  <!-- Search Box Container -->
+  <div class="search-box-wrapper" style="flex: 1; max-width: 540px">
+    <svg class="search-icon-left" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 16px; color: #888888; flex-shrink: 0; pointer-events: none;">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+    <input type="text" id="projectSearch" class="search-input" placeholder="Search tutorials by title, technique, software..." autocomplete="off">
+    <button type="button" id="searchClearBtn" class="search-clear-btn" aria-label="Clear search">
+      <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+    </button>
+  </div>
+
+  <!-- Filter Icon Toggle & Dropdown -->
+  <div class="advanced-filter-wrapper" style="position: relative; display: inline-block;">
+    <button type="button" id="filterDropdownToggle" class="filter-toggle-btn" aria-label="Filter tutorials" style="display: inline-flex; align-items: center; justify-content: center; background: transparent; border: none; padding: 0; cursor: pointer;">
+      <img src="images/filter.png" alt="Filter Icon" style="width: 24px; height: 24px; object-fit: contain; display: block;">
+    </button>
+
+<!-- Level 1 Dropdown Menu -->
+<div id="filterDropdownMenu" class="multi-layer-dropdown" style="display: none; position: absolute; top: calc(100% + 8px); right: 0; background-color: #ffffff; border: 1.5px solid rgba(21, 19, 31, 0.15); border-radius: var(--radius); min-width: 170px; box-shadow: 0 12px 30px rgba(21, 19, 31, 0.15); z-index: 200; padding: 8px 0;">
+  
+  <!-- Category Header -->
+  <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 6px 16px; letter-spacing: 0.08em; text-align: center;">Filter by</div>
+  
+  <!-- Level 1 Option: Software (Non-clickable Parent) -->
+  <div class="dropdown-submenu-parent" style="position: relative;">
+    <div class="dropdown-item" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); cursor: default;">
+      <span>◄</span>
+      <span style="flex: 1; text-align: center;">Software</span>
+    </div>
+
+    <!-- Level 2 Submenu: Software Options -->
+    <div class="dropdown-submenu" style="display: none; position: absolute; top: 0; right: 100%; background-color: #ffffff; border: 1.5px solid rgba(21, 19, 31, 0.15); border-radius: var(--radius); min-width: 210px; box-shadow: 0 12px 30px rgba(21, 19, 31, 0.15); z-index: 210; padding: 8px 0;">
+      <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 6px 16px; letter-spacing: 0.08em; text-align: center;">Software</div>
+      <a href="#" class="dropdown-item filter-option" data-software="premiere" style="display: flex; justify-content: center; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">Premiere Pro</a>
+      <a href="#" class="dropdown-item filter-option" data-software="aftereffects" style="display: flex; justify-content: center; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">After Effects</a>
+      <a href="#" class="dropdown-item filter-option" data-software="davinci" style="display: flex; justify-content: center; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">DaVinci Resolve</a>
+    </div>
+  </div>
+
+  <!-- Level 1 Option: Difficulty (Non-clickable Parent) -->
+  <div class="dropdown-submenu-parent" style="position: relative;">
+    <div class="dropdown-item" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); cursor: default;">
+      <span>◄</span>
+      <span style="flex: 1; text-align: center;">Difficulty</span>
+    </div>
+
+    <!-- Level 2 Submenu: Difficulty Options -->
+    <div class="dropdown-submenu" style="display: none; position: absolute; top: 0; right: 100%; background-color: #ffffff; border: 1.5px solid rgba(21, 19, 31, 0.15); border-radius: var(--radius); min-width: 210px; box-shadow: 0 12px 30px rgba(21, 19, 31, 0.15); z-index: 210; padding: 8px 0;">
+      <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 6px 16px; letter-spacing: 0.08em; text-align: center;">Difficulty</div>
+      <a href="#" class="dropdown-sub-option filter-option" data-level="beginner" style="display: block; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">Beginner</a>
+      <a href="#" class="dropdown-sub-option filter-option" data-level="intermediate" style="display: block; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">Intermediate</a>
+      <a href="#" class="dropdown-sub-option filter-option" data-level="advanced" style="display: block; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">Advanced</a>
+    </div>
+  </div>
+
+  <div style="border-top: 1px solid rgba(21, 19, 31, 0.1); margin: 6px 0;"></div>
+  
+  <!-- Favorites Shortcut -->
+  <a href="#" class="dropdown-item filter-option" data-software="favs" style="display: flex; justify-content: center; align-items: center; padding: 10px 16px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">★ Favorites</a>
+</div>
+  </div>
+</div>
+
+<!-- Active Filter Pills Container (Appears Under Search Bar) -->
+<div id="activeFiltersContainer" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;"></div>
+
+      <!-- Empty Search & Filter Results Message -->
+      <div id="noResultsMessage" class="no-results" style="display: none;">
+        <div class="no-results-icon">🔍</div>
+        <h3>No Tutorials Found</h3>
+        <p>Try adjusting your search terms or clearing your active filters.</p>
+      </div>
+
+      <!-- Screen Reader Live Status Region -->
+      <div class="sr-only" aria-live="polite" id="filterStatus">Showing 15 tutorials</div>
+
+      <div class="projects-grid" id="projectsGrid">
+
+  <!-- ========================================================
+       PREMIERE PRO (5 CARDS)
+       ======================================================== -->
+
+  <!-- Premiere Card 1: Timeline Pacing & Quick Cuts (Beginner) -->
+<article class="card project-card" data-category="premiere" data-difficulty="beginner" data-id="prem-1">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-beginner">Beginner</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/CdyTIng0M8Q/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/CdyTIng0M8Q/hqdefault.jpg';" 
+      alt="Timeline Pacing in Premiere Pro" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/timeline-pacing.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>Timeline Pacing</h3>
+  <!-- Tag Pills Row -->
+  <div class="card-meta-tags">
+    <span class="meta-tag">Premiere Pro</span>
+    <span class="meta-tag">Workflow</span>
+  </div>
+    <p>Master rough cutting, audio syncing, speed ramps, and seamless J/L-cuts for dynamic video pacing.</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Timeline Pacing" 
+        data-video="https://www.youtube.com/embed/CdyTIng0M8Q?autoplay=1" 
+        data-desc="Step-by-step masterclass covering timeline efficiency in Adobe Premiere Pro." 
+        data-download="tutorialVideo/timeline-pacing.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/timeline-pacing.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+  <!-- Premiere Card 2: Dynamic Speed Ramping & Flow (Intermediate) -->
+<article class="card project-card" data-category="premiere" data-difficulty="intermediate" data-id="prem-2">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-intermediate">Intermediate</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/U2TukFGyqew/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/U2TukFGyqew/hqdefault.jpg';" 
+      alt="Dynamic Speed Ramping in Premiere Pro" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/dynamic-speed-ramping.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>Dynamic Speed Ramping</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">Premiere Pro</span>
+    <span class="meta-tag">Motion</span>
+  </div>
+
+    <p>Learn time remapping, velocity curves, and optical flow interpolation for ultra-smooth action sequences.</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Dynamic Speed Ramping" 
+        data-video="https://www.youtube.com/embed/U2TukFGyqew?autoplay=1" 
+        data-desc="Master curve smoothing, speed ramps, and seamless frame interpolation in Adobe Premiere Pro." 
+        data-download="tutorialVideo/dynamic-speed-ramping.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/dynamic-speed-ramping.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+  <!-- Premiere Card 3: Essential Audio Mixing & EQ (Beginner) -->
+<article class="card project-card" data-category="premiere" data-difficulty="beginner" data-id="prem-3">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-beginner">Beginner</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/RCE64LXh4W4/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/RCE64LXh4W4/hqdefault.jpg';" 
+      alt="Essential Audio Mixing & EQ in Premiere Pro" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/essential-audio-mixing&EQ.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>Essential Audio Mixing & EQ</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">Premiere Pro</span>
+    <span class="meta-tag">Audio</span>
+  </div>
+
+    <p>Clean up noisy dialogue, balance multi-channel sound effects, and apply auto-ducking for background music.</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Essential Audio Mixing & EQ" 
+        data-video="https://www.youtube.com/embed/RCE64LXh4W4?autoplay=1" 
+        data-desc="Complete guide to the Essential Sound panel, parametric EQ, and loudness standards in Adobe Premiere Pro." 
+        data-download="tutorialVideo/essential-audio-mixing&EQ.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/essential-audio-mixing&EQ.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+  <!-- Premiere Card 4: Multi-Camera Sync & Production (Advanced) -->
+<article class="card project-card" data-category="premiere" data-difficulty="advanced" data-id="prem-4">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-advanced">Advanced</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/KnlPOB34Fng/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/KnlPOB34Fng/hqdefault.jpg';" 
+      alt="Multi-Camera Sync & Production in Premiere Pro" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/multi-camera-sync&production.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>Multi-Camera Sync & Production</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">Premiere Pro</span>
+    <span class="meta-tag">Multi-cam</span>
+  </div>
+
+    <p>Configure multi-camera source sequences via audio waveform sync and manage large live-action multi-track projects.</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Multi-Camera Sync & Production" 
+        data-video="https://www.youtube.com/embed/KnlPOB34Fng?autoplay=1" 
+        data-desc="High-efficiency workflow for documentary and interview multi-angle cutting in Adobe Premiere Pro." 
+        data-download="tutorialVideo/multi-camera-sync&production.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/multi-camera-sync&production.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- Premiere Card 5: Lumetri Color & HSL Secondary (Intermediate) -->
+<article class="card project-card" data-category="premiere" data-difficulty="intermediate" data-id="prem-5">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-intermediate">Intermediate</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/4dwwn2fjfbM/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/4dwwn2fjfbM/hqdefault.jpg';" 
+      alt="HSL Secondary in Premiere Pro" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/hsl-secondary.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>HSL Secondary</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">Premiere Pro</span>
+    <span class="meta-tag">Color</span>
+  </div>
+
+    <p>Dial in cinematic contrast with Lumetri Scopes, isolate skin tones, and build custom look presets (.look/.cube).</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="HSL Secondary" 
+        data-video="https://www.youtube.com/embed/4dwwn2fjfbM?autoplay=1" 
+        data-desc="Learn precision color correction and HSL keying in Adobe Premiere Pro." 
+        data-download="tutorialVideo/hsl-secondary.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/hsl-secondary.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+  <!-- ========================================================
+       AFTER EFFECTS (5 CARDS)
+       ======================================================== -->
+
+<!-- After Effects Card 1: Dynamic Kinetic Typography (Intermediate) -->
+<article class="card project-card" data-category="aftereffects" data-difficulty="intermediate" data-id="ae-2">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-intermediate">Intermediate</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/4vLwhXY0ZRw/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/4vLwhXY0ZRw/hqdefault.jpg';" 
+      alt="Dynamic Kinetic Typography in After Effects" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/dynamic-kinetic-typography.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>Dynamic Kinetic Typography</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">After Effects</span>
+    <span class="meta-tag">Motion Design</span>
+  </div>
+
+    <p>Master speed graphing, per-character 3D text animators, and seamless rotational camera transitions.</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Dynamic Kinetic Typography" 
+        data-video="https://www.youtube.com/embed/4vLwhXY0ZRw?autoplay=1" 
+        data-desc="Explore isometric 3D text rigs and procedural motion easing presets in After Effects." 
+        data-download="tutorialVideo/dynamic-kinetic-typography.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/dynamic-kinetic-typography.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- After Effects Card 2: 3D Camera Tracking & Sci-Fi HUD (Advanced) -->
+<article class="card project-card" data-category="aftereffects" data-difficulty="advanced" data-id="ae-4">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-advanced">Advanced</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/H0YIeg29yn4/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/H0YIeg29yn4/hqdefault.jpg';" 
+      alt="3D Camera Tracking & Sci-Fi HUD in After Effects" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/3D-camera-tracking&sci-fi-HUD.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>3D Camera Tracking & Sci-Fi HUD</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">After Effects</span>
+    <span class="meta-tag">VFX</span>
+  </div>
+
+    <p>Solve 3D camera point clouds, composite holographic UI screens, and align telemetry graphics in perspective.</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="3D Camera Tracking & Sci-Fi HUD" 
+        data-video="https://www.youtube.com/embed/H0YIeg29yn4?autoplay=1" 
+        data-desc="Advanced camera tracking and volumetric HUD composite masterclass in Adobe After Effects." 
+        data-download="tutorialVideo/3D-camera-tracking&sci-fi-HUD.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/3D-camera-tracking&sci-fi-HUD.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- After Effects Card 1: Logo Animation & Shape Morphs (Beginner) -->
+<article class="card project-card" data-category="aftereffects" data-difficulty="beginner" data-id="ae-1">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-beginner">Beginner</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/xvCTlEIvC8U/maxresdefault.jpg" 
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/xvCTlEIvC8U/hqdefault.jpg';"
+      alt="Logo Animation & Shape Morphs in After Effects" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/logo-animation.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>Logo Animation & Shape Morphs</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">After Effects</span>
+    <span class="meta-tag">Branding</span>
+  </div>
+
+    <p>Convert vector AI paths into shape layers, trim paths, and build clean intro reveals for brand identity.</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Logo Animation & Shape Morphs" 
+        data-video="https://www.youtube.com/embed/xvCTlEIvC8U?autoplay=1" 
+        data-desc="Learn stroke morphing and clean vector reveals in Adobe After Effects." 
+        data-download="tutorialVideo/logo-animation.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/logo-animation.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- After Effects Card 5: Cyberpunk Glitch Displacement (Advanced) -->
+<article class="card project-card" data-category="aftereffects" data-difficulty="advanced" data-id="ae-5">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-advanced">Advanced</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/YjgfuUxfgqU/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/YjgfuUxfgqU/hqdefault.jpg';" 
+      alt="Cyberpunk Glitch Displacement in After Effects" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/cyberpunk-glitch-displacement.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>Cyberpunk Glitch Displacement</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">After Effects</span>
+    <span class="meta-tag">VFX</span>
+  </div>
+
+    <p>Use procedural fractal maps, RGB split channel shifts, and displacement maps to produce realistic digital glitches.</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Cyberpunk Glitch Displacement" 
+        data-video="https://www.youtube.com/embed/YjgfuUxfgqU?autoplay=1" 
+        data-desc="Complete breakdown of custom glitch maps, RGB splitting, and chromatic aberration in After Effects." 
+        data-download="tutorialVideo/cyberpunk-glitch-displacement.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/cyberpunk-glitch-displacement.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- After Effects Card 3: Isometric App Explainer Rigging (Intermediate) -->
+<article class="card project-card" data-category="aftereffects" data-difficulty="intermediate" data-id="ae-3">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-intermediate">Intermediate</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/UI0cHx8V2Y0/maxresdefault.jpg" 
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/UI0cHx8V2Y0/hqdefault.jpg';"
+      alt="Isometric App Explainer Rigging in After Effects" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/isometric-app-explainer-rigging.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>Isometric App Explainer Rigging</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">After Effects</span>
+    <span class="meta-tag">Motion Design</span>
+  </div>
+
+    <p>Build modular isometric tech scenes with 2.5D parenting, value-driven sliders, and expression controllers.</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Isometric App Explainer Rigging" 
+        data-video="https://www.youtube.com/embed/UI0cHx8V2Y0?autoplay=1" 
+        data-desc="Setup isometric grid rigs, 3D layer parenting, and UI motion infographics inside Adobe After Effects." 
+        data-download="tutorialVideo/isometric-app-explainer-rigging.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/isometric-app-explainer-rigging.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+  <!-- ========================================================
+       DAVINCI RESOLVE (5 CARDS)
+       ======================================================== -->
+
+<!-- DaVinci Card 4: Color Wheels & Node Trees (Advanced) -->
+<article class="card project-card" data-category="davinci" data-difficulty="advanced" data-id="dav-4">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-advanced">Advanced</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/kdTMRQP_V7E/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/kdTMRQP_V7E/hqdefault.jpg';" 
+      alt="Node Tree in DaVinci Resolve" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/node-tree.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>Node Tree</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">After Effects</span>
+    <span class="meta-tag">Color</span>
+  </div>
+
+    <p>Master serial, parallel, and layer nodes to establish cinematic contrast, balance primaries, and apply film LUTs.</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Node Tree" 
+        data-video="https://www.youtube.com/embed/kdTMRQP_V7E?autoplay=1" 
+        data-desc="Masterclass on fixed broadcast node trees, CST color transforms, and film print look emulation in DaVinci Resolve." 
+        data-download="tutorialVideo/node-tree.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/node-tree.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- DaVinci Card 2: Fusion Node Compositing Basics (Intermediate) -->
+<article class="card project-card" data-category="davinci" data-difficulty="intermediate" data-id="dav-2">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-intermediate">Intermediate</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/gaFT_Kj2yeQ/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/gaFT_Kj2yeQ/hqdefault.jpg';" 
+      alt="Fusion Node Compositing Basics in DaVinci Resolve" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/fusion-node.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>Fusion Node Compositing Basics</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">DaVinci Resolve</span>
+    <span class="meta-tag">Fusion</span>
+  </div>
+
+    <p>Transition from layer-based to node-based VFX compositing, merge nodes, rotoscoping, and particle generators.</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Fusion Node Compositing Basics" 
+        data-video="https://www.youtube.com/embed/gaFT_Kj2yeQ?autoplay=1" 
+        data-desc="Learn fundamental VFX node networks, generator nodes, merges, and spline easing inside DaVinci Resolve Fusion." 
+        data-download="tutorialVideo/fusion-node.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/fusion-node.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- DaVinci Card 3: Fairlight Audio Mastering (Intermediate) -->
+<article class="card project-card" data-category="davinci" data-difficulty="intermediate" data-id="dav-3">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-intermediate">Intermediate</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/fbFbEIVZ62w/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/fbFbEIVZ62w/hqdefault.jpg';" 
+      alt="Fairlight Audio Mastering in DaVinci Resolve" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/fairlight-audio-mastering.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>Fairlight Audio Mastering</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">DaVinci Resolve</span>
+    <span class="meta-tag">Fairlight</span>
+  </div>
+
+    <p>Use Fairlight’s built-in sound sweetening suite, dynamics compressors, noise reduction, and binaural 3D panners.</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Fairlight Audio Mastering" 
+        data-video="https://www.youtube.com/embed/fbFbEIVZ62w?autoplay=1" 
+        data-desc="Complete guide to bus mastering, parametric EQ sweetening, Dynamics compression, and LUFS loudness monitoring in DaVinci Resolve Fairlight." 
+        data-download="tutorialVideo/fairlight-audio-mastering.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/fairlight-audio-mastering.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- DaVinci Card 1: Cut Page Fast Assembly (Beginner) -->
+<article class="card project-card" data-category="davinci" data-difficulty="beginner" data-id="dav-1">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-beginner">Beginner</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/85W8E7VRmU4/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/85W8E7VRmU4/hqdefault.jpg';" 
+      alt="Cut Page Fast Assembly in DaVinci Resolve" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/cut-page.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>Cut Page Fast Assembly</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">DaVinci Resolve</span>
+    <span class="meta-tag">Cut Page</span>
+  </div>
+
+    <p>Master source tape scrubbing, dual timeline navigation, and fast split-edits tailored for quick turnaround productions.</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Cut Page Fast Assembly" 
+        data-video="https://www.youtube.com/embed/85W8E7VRmU4?autoplay=1" 
+        data-desc="Master rapid source tape scrubbing, JKL navigation, and dual-timeline rough assembly in DaVinci Resolve's Cut Page." 
+        data-download="tutorialVideo/cut-page.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/cut-page.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+<!-- DaVinci Card 5: ACES Color Management & HDR (Advanced) -->
+<article class="card project-card" data-category="davinci" data-difficulty="advanced" data-id="dav-5">
+  <div class="card-thumb">
+    <!-- Difficulty Badge -->
+    <span class="badge-difficulty badge-advanced">Advanced</span>
+    
+    <!-- Video Duration Overlay -->
+    <span class="video-duration">--:--</span>
+
+    <!-- YouTube Thumbnail & Video Preview -->
+    <img 
+      src="https://img.youtube.com/vi/i--TS88-6xA/hqdefault.jpg" 
+      alt="ACES Color Management in DaVinci Resolve" 
+      class="card-img-static"
+      loading="lazy">
+    <video class="card-preview-video" muted loop playsinline preload="none">
+      <source src="videos/tutorialVideo/ace-color-management.mp4" type="video/mp4">
+    </video>
+
+    <!-- Favorite Button -->
+    <button 
+      class="fav-btn" 
+      title="Save to favorites" 
+      aria-label="Save to favorites" 
+      aria-pressed="false">
+      ♥
+    </button>
+  </div>
+
+  <div class="card-content">
+    <h3>ACES Color Management</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">DaVinci Resolve</span>
+    <span class="meta-tag">Color Management</span>
+  </div>
+
+    <p>Set up ACEScc and DaVinci YRGB Color Managed pipelines to grade wide-gamut RAW and cinema camera logs.</p>
+    
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="ACES Color Management" 
+        data-video="https://www.youtube.com/embed/i--TS88-6xA?autoplay=1" 
+        data-desc="Professional color science masterclass on ACEScc/ACEScct setup, IDT input transforms, ODT display matching, and EXR pipeline workflows in DaVinci Resolve." 
+        data-download="tutorialVideo/ace-color-management.mp4">
+        Start Lesson
+      </button>
+      <a href="videos/tutorialVideo/ace-color-management.mp4" class="btn btn-download" download title="Download video file">
+        📥 Download
+      </a>
+    </div>
+  </div>
+</article>
+
+</div>
+    </div>
+  </main>
+
+  <!-- Video Modal -->
+<div 
+  id="videoModal" 
+  class="modal" 
+  role="dialog" 
+  aria-modal="true" 
+  aria-labelledby="modalTitle" 
+  aria-hidden="true">
+  <div class="modal-backdrop" tabindex="-1"></div>
+  <div class="modal-dialog">
+    <button class="modal-close" aria-label="Close video modal">&times;</button>
+    <div class="modal-media">
+      <iframe id="modalIframe" 
+      src="" 
+      allow="autoplay; encrypted-media" 
+      allowfullscreen 
+      title="Tutorial video player"
+      loading="lazy"></iframe>
+    </div>
+    <div class="modal-body">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      
+      <!-- Dynamic Modal Download Button -->
+      <div class="modal-actions" style="margin-top: 20px;">
+        <a id="modalDownloadBtn" class="btn btn-download" href="#" download style="display: none;">
+          📥 Download Tutorial Video (.MP4)
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+  </main>
+
+  <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+
+      <!-- Left Column: Branding & Socials -->
+      <div class="footer-info">
+        <div class="footer-brand">PIXEL</div>
+        <p class="muted">Animation &amp; Multimedia Club</p>
+        <div class="social-links">
+          <a href="https://chat.whatsapp.com/Lg8gJl5Xru52lrucpBrVzS" aria-label="Whatsapp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/pixe.lclub?igsi=c2UzMmYwMGY0czd2" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" target="_blank" rel="noopener noreferrer"></i></a>
+          <a href="https://discord.gg/sAC37jRx9b" aria-label="Discord" target=" _blank" rel="noopener noreferrer"><i class="fa-brands fa-discord" target="_blank" rel="noopener noreferrer"></i></a>
+          <a href="https://github.com/PixelAnimationAndMultimeidaClub/Pixel-Club-site-2026" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+
+      <!-- Center/Right: Structured Navigation Columns -->
+      <div class="footer-nav-grid">
+        <div class="footer-col">
+          <span class="label-mono">Explore</span>
+          <a href="animation.html">Animation</a>
+          <a href="tutorials.html">Video Tutorials</a>
+          <a href="product.html">Our Products</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="label-mono">Community</span>
+          <a href="event.html">Upcoming Events</a>
+          <a href="blog.html">Blogs / News</a>
+          <a href="mentor.html">Our Teams</a>
+        </div>
+
+        <div class="footer-next">
+          <span class="label-mono">Up Next</span>
+          <a href="about.html" class="next-link">
+            <span>Learn More About Us</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <span class="label-mono">&copy; 2026 Animation & Multimedia Club. All rights reserved.</span>
+      <span class="label-mono">Built with frame precision</span>
+    </div>
+  </div>
+</footer> 
+
+  <!-- Scripts -->
+  <script src="default.js"></script>
+  <script src="tutorials.js"></script>
+</body>
+</html>

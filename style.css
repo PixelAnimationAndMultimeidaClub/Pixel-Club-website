@@ -1,0 +1,486 @@
+/* ==========================================================================
+   Animation & Multimedia Club — Shared Style Guide
+   Concept: "The editing timeline" — nav & dividers borrow the visual
+   language of a video editor (playheads, frame markers, scrub bars).
+
+   Every group member should link this file on every page:
+   <link rel="stylesheet" href="style.css">
+
+   DO NOT override these variables in individual pages — if a page
+   needs something new, add it here so the whole site stays consistent.
+   ========================================================================== */
+
+:root {
+  /* Colors */
+  --void: #15131F;         /* dark bg — hero, nav, footer */
+  --cloud: #F6F4EF;        /* light bg — content sections */
+  --sky-blue: #3DB8FF;        /* primary accent — CTAs, links, active states */
+  --sky-blue-dark: #1A93D6;   /* hover/pressed state for sky blue */
+  --yellow: #FFD93D;         /* secondary accent — highlights, hover ONLY, never backgrounds */
+  --ink: #201E2E;          /* body text on light backgrounds */
+  --mist: #8B889C;         /* muted / secondary text */
+  --cloud-dim: #EAE7DF;    /* card borders, dividers on light bg */
+  --void-dim: #29273A;     /* card borders, dividers on dark bg */
+
+  /* Typography — 5 fonts, each with one job only */
+  --font-hero: 'Bungee', sans-serif;         /* h1 hero titles ONLY */
+  --font-heading: 'Space Grotesk', sans-serif; /* h2, h3, h4 section headings */
+  --font-body: 'Golos Text', sans-serif;     /* all paragraph / body copy */
+  --font-nav: 'Press Start 2P', monospace;   /* nav bar items ONLY */
+  --font-mono: 'JetBrains Mono', monospace;  /* tags, timecodes, small labels */
+
+  /* Layout */
+  --radius: 12px;
+  --section-pad-desktop: 80px;
+  --section-pad-mobile: 40px;
+  --container-max: 1200px;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--cloud);
+  line-height: 1.6;
+}
+
+h1 {
+  font-family: var(--font-hero);
+  font-weight: 400;
+  margin: 0 0 0.5em;
+  line-height: 1.25;
+  font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+}
+
+h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+}
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 500; }
+h3 { font-size: 1.25rem; font-weight: 500; }
+
+p { margin: 0 0 1em; color: var(--ink); }
+p.muted { color: var(--mist); }
+
+a { color: var(--sky-blue); text-decoration: none; }
+a:hover { color: var(--sky-blue-dark); }
+
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: var(--section-pad-mobile) 0;
+}
+
+@media (min-width: 768px) {
+  .section { padding: var(--section-pad-desktop) 0; }
+}
+
+.section-dark {
+  background: var(--void);
+  color: var(--cloud);
+}
+.section-dark h1, .section-dark h2, .section-dark h3 { color: var(--cloud); }
+.section-dark p { color: #C9C6D6; }
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+.navbar {
+  background: var(--void);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Logo & Brand Styling */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-logo {
+  height: 36px;
+  margin-right: 12px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--cloud);
+  font-size: 1.25rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.brand-subtitle {
+  font-family: var(--font-mono);
+  color: var(--sky-blue);
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 5px;
+  line-height: 1;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav a {
+  font-family: var(--font-nav);
+  color: #C9C6D6;
+  margin-left: 24px;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.15s ease;
+}
+
+.navbar-nav a:hover,
+.navbar-nav a.active { color: var(--yellow); }
+
+/* Scrub bar */
+.scrub-bar {
+  height: 3px;
+  background: var(--void-dim);
+  width: 100%;
+}
+.scrub-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--sky-blue);
+  transition: width 0.1s linear;
+}
+
+/* Dropdown Styling */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0; /* Changed from 24px so it aligns directly with the toggle button */
+  background: var(--void);
+  border: 1px solid var(--void-dim);
+  border-radius: 8px;
+  min-width: 150px;
+  padding: 10px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+/* Invisible hover bridge to bridge any gap between button and menu */
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: transparent;
+}
+
+.dropdown-menu a {
+  display: block;
+  margin: 0;
+  padding: 12px 20px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+/* Hamburger Button */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: var(--cloud);
+  transition: 0.3s;
+}
+
+/* Responsive Mobile Navigation */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+  
+  .navbar-nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 24px;
+    background: var(--void);
+    width: 200px;
+    padding: 20px;
+    border: 1px solid var(--void-dim);
+    border-radius: 8px;
+  }
+  
+  .navbar-nav.show {
+    display: flex;
+  }
+
+  .navbar-nav a {
+    margin: 10px 0;
+  }
+  
+  .dropdown-menu {
+    position: relative;
+    left: 0;
+    box-shadow: none;
+    border: none;
+    padding: 0 0 0 15px;
+  }
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--sky-blue);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--sky-blue-dark); color: #fff; }
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--cloud);
+  color: var(--cloud);
+}
+.btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+
+.card {
+  background: #fff;
+  border: 1px solid var(--cloud-dim);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.card:hover {
+  border-color: var(--sky-blue);
+  transform: translateY(-2px);
+}
+
+.card img {
+  border-radius: calc(var(--radius) - 4px);
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--cloud-dim);
+  color: var(--ink);
+}
+.tag.active {
+  background: #FFF3C4;
+  color: #8A6D00;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  background: var(--void);
+  color: var(--mist);
+  padding: 48px 0 24px;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--void-dim);
+}
+
+.footer .container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-brand {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--cloud);
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+}
+
+/* General Footer Links */
+.footer a { 
+  color: #C9C6D6; 
+  transition: color 0.15s ease;
+}
+
+.footer a:hover { 
+  color: var(--yellow); 
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  gap: 16px;
+  font-size: 1.2rem;
+  margin-top: 12px;
+}
+
+.social-links a {
+  color: var(--mist);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+  color: var(--sky-blue);
+  transform: translateY(-2px);
+}
+
+/* Navigation Grid */
+.footer-nav-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col a {
+  font-size: 0.95rem;
+  color: var(--mist);
+}
+
+.footer-col a:hover {
+  color: var(--cloud);
+}
+
+/* "Up Next" Call to Action */
+.footer-next {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.next-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--sky-blue) !important;
+}
+
+.next-link:hover {
+  color: var(--yellow) !important;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--void-dim);
+}
+
+/* Desktop Layout Adjustments */
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}

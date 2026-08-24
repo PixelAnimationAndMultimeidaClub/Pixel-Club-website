@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event | Animation & Multimedia Club</title>
+  <link rel="icon" href="images/icon.svg" type="image/svg+xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@500;700&family=Golos+Text:wght@400..900&family=Press+Start+2P&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="event.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <!-- Logo and Brand Name -->
+      <a href="index.html" class="navbar-brand">
+        <!-- Replace logo.png with your actual logo file -->
+        <img src="images/pixel-logo.svg" alt="Logo" class="brand-logo">
+        <div class="brand-text">
+          <span class="brand-title">pixel</span>
+          <span class="brand-subtitle">animation & multimedia club</span>
+        </div>
+      </a>
+      
+      <!-- Hamburger Button for Mobile -->
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="navbar-nav" id="navbar-nav">
+        <a href="index.html" >Home</a>
+        <a href="about.html">About</a>
+        
+        <!-- Explore Dropdown -->
+        <div class="dropdown">
+          <a class="dropdown-toggle" id="explore-btn">Explore ▼</a>
+          <div class="dropdown-menu">
+            <a href="animation.html">Animation</a>
+            <a href="tutorials.html">Video</a>
+            <a href="product.html">Product</a>
+          </div>
+        </div>
+        
+        <a href="event.html" class="active">Event</a>
+        <a href="blog.html">Blog</a>
+        <a href="mentor.html">Mentor</a>
+      </div>
+    </div>
+    
+    <!-- Scrub Bar Indicator -->
+    <div class="scrub-bar"><div class="scrub-fill" id="scrubFill"></div></div>
+  </nav>
+
+  <!-- Dark Header Section (Cleaned up extra closing divs) -->
+  <section class="section section-dark hero-section">
+    <div class="hero-bg-overlay"></div> 
+    <div class="container">
+      <span class="label-mono">SCHEDULE</span> 
+      <h1>EVENTS &<br>WORKSHOPS</h1> 
+      <p>Explore upcoming video editing tutorials and hands-on 2D/3D animation workshops hosted by senior members.</p>
+    </div>
+  </section>
+
+  <!-- Main Page Content (Change this per page) -->
+  <main class="section">
+    <!-- Light Section Container -->
+  <section class="section"> 
+    <div class="container">
+
+      <!-- Search & Filter Row -->
+      <div class="tutorial-search-filter-row" style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 0; margin-bottom: 12px; flex-wrap: wrap; width: 100%;">
+
+        <!-- Search Box Container -->
+        <div class="search-box-wrapper" style="flex: 1; max-width: 540px;">
+          <svg class="search-icon-left" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 16px; color: #888888; flex-shrink: 0; pointer-events: none;">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="eventSearch" class="search-input" placeholder="Search events by title, description..." autocomplete="off">
+          <button type="button" id="searchClearBtn" class="search-clear-btn" aria-label="Clear search">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+          </button>
+        </div>
+
+        <!-- Filter Icon Toggle & Dropdown -->
+        <div class="advanced-filter-wrapper" style="position: relative; display: inline-block;">
+          <button type="button" id="filterDropdownToggle" class="filter-toggle-btn" aria-label="Filter events" style="display: inline-flex; align-items: center; justify-content: center; background: transparent; border: none; padding: 0; cursor: pointer;">
+            <img src="images/filter.png" alt="Filter Icon" style="width: 24px; height: 24px; object-fit: contain; display: block;">
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div id="filterDropdownMenu" class="multi-layer-dropdown" style="display: none; position: absolute; top: calc(100% + 8px); right: 0; background-color: #ffffff; border: 1.5px solid rgba(21, 19, 31, 0.15); border-radius: var(--radius); min-width: 170px; box-shadow: 0 12px 30px rgba(21, 19, 31, 0.15); z-index: 200; padding: 8px 0;">
+            
+            <!-- Category Header -->
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 6px 16px; letter-spacing: 0.08em; text-align: center;">Filter by</div>
+
+            <!-- Event Type Submenu Parent -->
+            <div class="dropdown-submenu-parent" style="position: relative;">
+              <a href="#" class="dropdown-item" style="display: flex; justify-content: center; align-items: center; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; position: relative;">
+                <span style="position: absolute; left: 14px; font-size: 0.7rem;">◄</span> Event Type
+              </a>
+              
+              <!-- Event Type Submenu -->
+              <div class="dropdown-submenu" style="display: none; position: absolute; top: 0; right: 100%; background-color: #ffffff; border: 1.5px solid rgba(21, 19, 31, 0.15); border-radius: var(--radius); min-width: 170px; box-shadow: 0 12px 30px rgba(21, 19, 31, 0.15); z-index: 210; padding: 8px 0;">
+                <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 6px 12px; letter-spacing: 0.08em; text-align: center;">Event Type</div>
+                <a href="#" class="dropdown-item filter-option" data-type="workshop" style="display: block; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">Workshop</a>
+                <a href="#" class="dropdown-item filter-option" data-type="tutorial" style="display: block; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">Tutorial</a>
+                <a href="#" class="dropdown-item filter-option" data-type="bootcamp" style="display: block; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">Bootcamp</a>
+              </div>
+            </div>
+
+            <!-- Difficulty Submenu Parent -->
+            <div class="dropdown-submenu-parent" style="position: relative;">
+              <a href="#" class="dropdown-item" style="display: flex; justify-content: center; align-items: center; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; position: relative;">
+                <span style="position: absolute; left: 14px; font-size: 0.7rem;">◄</span> Difficulty
+              </a>
+              
+              <!-- Difficulty Submenu -->
+              <div class="dropdown-submenu" style="display: none; position: absolute; top: 0; right: 100%; background-color: #ffffff; border: 1.5px solid rgba(21, 19, 31, 0.15); border-radius: var(--radius); min-width: 170px; box-shadow: 0 12px 30px rgba(21, 19, 31, 0.15); z-index: 210; padding: 8px 0;">
+                <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 6px 12px; letter-spacing: 0.08em; text-align: center;">Difficulty Level</div>
+                <a href="#" class="dropdown-item filter-option" data-level="beginner" style="display: block; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">Beginner</a>
+                <a href="#" class="dropdown-item filter-option" data-level="intermediate" style="display: block; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">Intermediate</a>
+                <a href="#" class="dropdown-item filter-option" data-level="advanced" style="display: block; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">Advanced</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Active Filter Pills Container -->
+      <div id="activeFiltersContainer" style="display: flex; flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; gap: 8px; margin: 12px auto 24px auto; max-width: 540px; width: 100%;"></div>
+
+      <!-- No Results Message -->
+      <!-- No Results Message -->
+      <div id="noResults" class="no-results" style="display: none; grid-column: 1 / -1;">
+        <div class="no-results-icon">🔍</div>
+        <h3>No Events Found</h3>
+        <p>No workshops or tutorials match your current filter combination. Try selecting different categories or levels.</p>
+      </div>
+
+      <!-- Events Grid -->
+      <div class="grid" id="eventsGrid">
+        <article class="card" data-type="workshop" data-level="beginner"> 
+          <img src="images/2d_Animation_Masterclass.png" alt="2D Animation">
+          <h3>2D Frame-by-Frame Animation</h3> 
+          <div style="margin-bottom: 12px;">
+            <span class="tag">Workshop</span> 
+            <span class="tag">Beginner</span> 
+          </div>
+          <p class="label-mono">DATE: OCT 24, 2026 | TIME: 14:00 - 16:30</p> 
+          <p>Learn the 12 principles of animation using digital light tables and storyboarding techniques.</p>
+          <button class="btn btn-primary" style="width: 100%;" onclick="openRegistration('2D Frame-by-Frame Animation', 'OCT 24, 2026', '14:00 - 16:30')">Register Now</button> 
+        </article>
+
+        <article class="card" data-type="tutorial" data-level="intermediate"> 
+          <img src="images/Video_Editing.png" alt="Video Editing">
+          <h3>Color Grading & Timeline Editing</h3>
+          <div style="margin-bottom: 12px;">
+            <span class="tag">Tutorial</span> 
+            <span class="tag">Intermediate</span> 
+          </div> 
+          <p class="label-mono">DATE: NOV 02, 2026 | TIME: 10:00 - 12:00</p> 
+          <p>Master multi-track video editing, LUTs, and dynamic speed ramping in Premiere Pro.</p>
+          <button class="btn btn-primary" style="width: 100%;" onclick="openRegistration('Color Grading & Timeline Editing', 'NOV 02, 2026', '10:00 - 12:00')">Register Now</button> 
+        </article>
+
+        <article class="card" data-type="bootcamp" data-level="advanced">
+          <img src="images/3d_Modeling_Bootcamp.png" alt="3D Modeling">
+          <h3>3D Character Rigging in Blender</h3> 
+          <div style="margin-bottom: 12px;">
+            <span class="tag">Bootcamp</span> 
+            <span class="tag">Advanced</span> 
+          </div>
+          <p class="label-mono">DATE: NOV 15, 2026 | TIME: 13:00 - 17:00</p> 
+          <p>An intensive session covering mesh topology, weight painting, and inverse kinematics.</p>
+          <button class="btn btn-primary" style="width: 100%;" onclick="openRegistration('3D Character Rigging in Blender', 'NOV 15, 2026', '13:00 - 17:00')">Register Now</button> 
+        </article>
+
+        <article class="card" data-type="workshop" data-level="intermediate">
+          <img src="images/VFX&Compositing_in_After_Effects.png" alt="VFX">
+          <h3 class="card-title">VFX & Compositing in After Effects</h3>
+          <div style="margin-bottom: 12px;">
+            <span class="tag">WORKSHOP</span>
+            <span class="tag">INTERMEDIATE</span>
+          </div>
+          <p class="label-mono">DATE: NOV 20, 2026 | TIME: 14:00 - 17:00</p>
+          <p class="card-desc">Learn chroma keying, motion tracking, and multi-pass render layering for seamless visual effects integration.</p>
+          <button class="btn btn-primary" style="width: 100%;" onclick="openRegistration('VFX & Compositing in After Effects', 'NOV 20, 2026', '14:00 - 17:00')">Register Now</button> 
+        </article>
+
+        <article class="card" data-type="bootcamp" data-level="beginner">
+          <img src="images/Sound_Design&Audio_Mastering.png" alt="Sound Design">
+          <h3 class="card-title">Sound Design & Audio Mastering</h3>
+          <div style="margin-bottom: 12px;">
+            <span class="tag">BOOTCAMP</span>
+            <span class="tag">BEGINNER</span>
+          </div>
+          <p class="label-mono">DATE: DEC 01, 2026 | TIME: 10:00 - 13:00</p>
+          <p class="card-desc">Explore Foley sound creation, EQ balancing, dynamic compression, and spatial audio mixing techniques.</p>
+          <button class="btn btn-primary" style="width: 100%;" onclick="openRegistration('Sound Design & Audio Mastering', 'DEC 01, 2026', '10:00 - 13:00')">Register Now</button> 
+        </article>
+
+        <article class="card" data-type="tutorial" data-level="advanced">
+          <img src="images/Procedural_Texturing_in_Substance.png" alt="Substance">
+          <h3 class="card-title">Procedural Texturing in Substance</h3>
+          <div style="margin-bottom: 12px;">
+            <span class="tag">TUTORIAL</span>
+            <span class="tag">ADVANCED</span>
+          </div>
+          <p class="label-mono">DATE: DEC 08, 2026 | TIME: 15:00 - 18:00</p>
+          <p class="card-desc">Master UV unwrapping, smart materials, curvature masking, and PBR texture map baking.</p>
+          <button class="btn btn-primary" style="width: 100%;" onclick="openRegistration('Procedural Texturing in Substance', 'DEC 08, 2026', '15:00 - 18:00')">Register Now</button> 
+        </article>
+
+        <article class="card" data-type="workshop" data-level="beginner">
+          <img src="images/Character_Design&Cocept_Art.png" alt="Concept Art">
+          <h3 class="card-title">Character Design & Concept Art</h3>
+          <div style="margin-bottom: 12px;">
+            <span class="tag">WORKSHOP</span>
+            <span class="tag">BEGINNER</span> 
+          </div>
+          <p class="label-mono">DATE: DEC 12, 2026 | TIME: 11:00 - 13:30</p>
+          <p>Build strong visual silhouettes, expression sheets, and expressive color palettes for digital storytelling.</p>
+          <button class="btn btn-primary" style="width: 100%;" onclick="openRegistration('Character Design & Concept Art', 'DEC 12, 2026', '11:00 - 13:30')">Register Now</button> 
+        </article>
+
+        <article class="card" data-type="bootcamp" data-level="intermediate">
+          <img src="images/3D_Lighting&Photorealism.png" alt="Lighting">
+          <h3 class="card-title">3D Lighting & Photorealism</h3>
+          <div style="margin-bottom: 12px;">
+            <span class="tag">BOOTCAMP</span>
+            <span class="tag">INTERMEDIATE</span> 
+          </div>
+          <p class="label-mono">DATE: DEC 18, 2026 | TIME: 13:00 - 16:00</p>
+          <p>Understand three-point studio lighting, HDRI environment mapping, ray-tracing, and exposure controls.</p>
+          <button class="btn btn-primary" style="width: 100%;" onclick="openRegistration('3D Lighting & Photorealism', 'DEC 18, 2026', '13:00 - 16:00')">Register Now</button> 
+        </article>
+
+        <article class="card" data-type="tutorial" data-level="advanced">
+          <img src="images/Cinematography&Camera_Motion.png" alt="Cinematography">
+          <h3 class="card-title">Cinematography & Camera Motion</h3>
+          <div style="margin-bottom: 12px;">
+            <span class="tag">TUTORIAL</span>
+            <span class="tag">ADVANCED</span>
+          </div>
+          <p class="label-mono">DATE: DEC 22, 2026 | TIME: 14:00 - 16:00</p>
+          <p>Master focal length choices, depth of field controls, framing composition, and dynamic camera movements.</p>
+          <button class="btn btn-primary" style="width: 100%;" onclick="openRegistration('Cinematography & Camera Motion', 'DEC 22, 2026', '14:00 - 16:00')">Register Now</button> 
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Registration Modal -->
+  <div id="registrationModal" class="modal">
+    <div class="registration-form">
+      <button class="close-btn" onclick="closeRegistration()">&times;</button>
+      <span class="label-mono">// REGISTRATION</span>
+      <h2>Workshop Registration</h2>
+      <p class="muted">Complete the form below to register for this session.</p>
+
+      <div class="selected-workshop">
+        <p class="label-mono">SELECTED SESSION</p>
+        <h3 id="selectedWorkshop">Workshop Name</h3>
+        <p id="selectedDate" class="label-mono">DATE</p>
+        <p id="selectedTime" class="label-mono">TIME</p>
+      </div>
+
+      <form id="registrationForm">
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="studentID">Student ID *</label>
+          <input type="text" id="studentID" name="studentID" placeholder="Enter your student ID" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" placeholder="012-3456789" required>
+        </div>
+        <div class="form-group">
+          <label for="experience">Animation / Video Editing Experience</label>
+          <select id="experience" name="experience">
+            <option value="">-- Select Experience Level --</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Additional Information</label>
+          <textarea id="message" name="message" rows="4" placeholder="Any questions or information you would like to tell us?"></textarea>
+        </div>
+        <div class="form-checkbox">
+          <label>
+            <input type="checkbox" id="agreement" required>
+            I agree to attend the selected workshop and follow the club's rules. *
+          </label>
+        </div>
+        <div class="form-buttons">
+          <button type="submit" class="btn btn-primary">Submit Registration</button>
+          <button type="button" class="btn cancel-btn" onclick="closeRegistration()">Cancel</button>
+        </div>
+      </form>
+
+      <div id="successMessage" class="success-message">
+        <h3>Registration Successful!</h3>
+        <p>Thank you for registering. We look forward to seeing you at the workshop!</p>
+        <button class="btn btn-primary" onclick="closeRegistration()">Close</button>
+      </div>
+    </div>
+  </div>
+  </main>
+
+    <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+
+      <!-- Left Column: Branding & Socials -->
+      <div class="footer-info">
+        <div class="footer-brand">PIXEL</div>
+        <p class="muted">Animation &amp; Multimedia Club</p>
+        <div class="social-links">
+          <a href="https://chat.whatsapp.com/Lg8gJl5Xru52lrucpBrVzS" aria-label="Whatsapp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/pixe.lclub?igsi=c2UzMmYwMGY0czd2" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" target="_blank" rel="noopener noreferrer"></i></a>
+          <a href="https://discord.gg/sAC37jRx9b" aria-label="Discord" target=" _blank" rel="noopener noreferrer"><i class="fa-brands fa-discord" target="_blank" rel="noopener noreferrer"></i></a>
+          <a href="https://github.com/PixelAnimationAndMultimeidaClub/Pixel-Club-site-2026" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+
+      <!-- Center/Right: Structured Navigation Columns -->
+      <div class="footer-nav-grid">
+        <div class="footer-col">
+          <span class="label-mono">Explore</span>
+          <a href="animation.html">Animation</a>
+          <a href="video.html">Video Tutorials</a>
+          <a href="products.html">Our Products</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="label-mono">Community</span>
+          <a href="events.html">Upcoming Events</a>
+          <a href="blog.html">Blogs / News</a>
+          <a href="mentors.html">Our Teams</a>
+        </div>
+
+        <div class="footer-next">
+          <span class="label-mono">Up Next</span>
+          <a href="about.html" class="next-link">
+            <span>Learn More About Us</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <span class="label-mono">&copy; 2026 Animation & Multimedia Club. All rights reserved.</span>
+      <span class="label-mono">Built with frame precision</span>
+    </div>
+  </div>
+</footer> 
+
+  <!-- Scripts -->
+  <script src="default.js"></script>
+  <script src="event.js"></script>
+</body>
+</html>

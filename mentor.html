@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentors | Animation & Multimedia Club</title>
+  <link rel="icon" href="images/icon.svg" type="image/svg+xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@500;700&family=Golos+Text:wght@400..900&family=Press+Start+2P&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mentor.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <!-- Logo and Brand Name -->
+      <a href="index.html" class="navbar-brand">
+        <!-- Replace logo.png with your actual logo file -->
+        <img src="images/pixel-logo.svg" alt="Logo" class="brand-logo">
+        <div class="brand-text">
+          <span class="brand-title">pixel</span>
+          <span class="brand-subtitle">animation & multimedia club</span>
+        </div>
+      </a>
+      
+      <!-- Hamburger Button for Mobile -->
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="navbar-nav" id="navbar-nav">
+        <a href="index.html" >Home</a>
+        <a href="about.html">About</a>
+        
+        <!-- Explore Dropdown -->
+        <div class="dropdown">
+          <a class="dropdown-toggle" id="explore-btn">Explore ▼</a>
+          <div class="dropdown-menu">
+            <a href="animation.html">Animation</a>
+            <a href="tutorials.html">Video</a>
+            <a href="product.html">Product</a>
+          </div>
+        </div>
+        
+        <a href="event.html">Event</a>
+        <a href="blog.html">Blog</a>
+        <a href="mentor.html" class="active">Mentor</a>
+      </div>
+    </div>
+    
+    <!-- Scrub Bar Indicator -->
+    <div class="scrub-bar"><div class="scrub-fill" id="scrubFill"></div></div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="section section-dark hero-header-bg">
+    <div class="container">
+      <span class="label-mono" style="color: var(--sky-blue);">// FACULTY &amp; INDUSTRY GUIDES</span>
+      <h1>OUR MENTORS</h1>
+      <p>Learn from experienced academics, technical directors, and industry artists guiding PIXEL's creative talent.</p>
+    </div>
+  </header>
+
+  <!-- Side Navigation Bar Trigger & Drawer -->
+  <div class="side-nav-trigger-zone">
+    <div class="side-nav-handle">◀</div>
+    <div class="side-nav-drawer">
+      <div class="side-nav-title">// QUICK NAVIGATE</div>
+      <div class="side-nav-links">
+        <a href="#mentor-yc" class="side-nav-link active">Dr. Wong <span>01</span></a>
+        <a href="#mentor-yl" class="side-nav-link">Chan Yan Ling <span>02</span></a>
+        <a href="#mentor-jy" class="side-nav-link">Kong Jun Yang <span>03</span></a>
+        <a href="#mentor-cr" class="side-nav-link">Hong Chee Ren <span>04</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Scrollable Content Blocks -->
+  <main>
+
+    <!-- MENTOR 1: Dr. Wong Yi Chieng -->
+    <div class="mentor-block" id="mentor-yc">
+      <!-- Intro Frame (Pinned Sticky) -->
+      <div class="mentor-intro-frame" style="background-image: url('images/yc_background.png');">
+        <div class="intro-content">
+          <span class="label-mono" style="color: var(--sky-blue);">// FACULTY ADVISOR</span>
+          <h2>Dr. Wong Yi Chieng</h2>
+          <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+            <span class="tag active">3D ANIMATION</span>
+            <span class="tag">MAYA</span>
+          </div>
+          <p class="intro-summary">12+ years experience in character rigging, production pipeline architecture, and technical direction for feature-length 3D animation.</p>
+        </div>
+      </div>
+      <!-- Backstory Card (Slides up over intro) -->
+      <div class="mentor-story-card" style="background-image: url('images/yc_backstory.png');">
+        <div class="story-content">
+          <div class="story-title">// BACKGROUND STORY</div>
+          <p class="story-body">
+            Dr. Wong’s journey began in classic 3D animation studios, where he worked long nights troubleshooting broken character rigs and resolving broken rendering pipelines for feature films. After earning his doctorate in Computer Graphics and Digital Production, he transitioned to academia with a simple mission: bridging the gap between artistic intuition and technical discipline.
+            <br><br>
+            Known around the lab as the "Pipeline Whisperer," Dr. Wong believes that clean topology and efficient rigging are what give digital characters their soul. When he’s not guiding students through complex Maya node graphs or Python automation scripts, he can usually be found analyzing the subtle physics of real-world movement to help animators make their weight distribution look believable.
+          </p>
+          <div class="story-philosophy">"Structure doesn't restrict creativity—it gives it a solid skeleton to dance on."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENTOR 2: Chan Yan Ling -->
+    <div class="mentor-block" id="mentor-yl">
+      <!-- Intro Frame (Pinned Sticky) -->
+      <div class="mentor-intro-frame" style="background-image: url('images/yl_background.png');">
+        <div class="intro-content">
+          <span class="label-mono" style="color: var(--yellow);">// GUEST INDUSTRY MENTOR</span>
+          <h2>Chan Yan Ling</h2>
+          <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+            <span class="tag active">MOTION GRAPHICS</span>
+            <span class="tag">AFTER EFFECTS</span>
+          </div>
+          <p class="intro-summary">Senior Motion Designer specializing in commercial title sequences, keyframe animations, UI interactions, and visual effects pipelines.</p>
+        </div>
+      </div>
+      <!-- Backstory Card (Slides up over intro) -->
+      <div class="mentor-story-card" style="background-image: url('images/yl_backstory.png');">
+        <div class="story-content">
+          <div class="story-title">// BACKGROUND STORY</div>
+          <p class="story-body">
+            Yan Ling spent the early years of her career in fast-paced creative agencies across Southeast Asia, crafting keyframe visual sequences for international brands, interactive UI transitions, and high-energy commercial title cards. Her breakthrough came when a kinetic typography project she directed went viral across design showcase platforms, opening doors to direct major visual campaigns.
+            <br><br>
+            As a guest mentor, Yan Ling brings raw real-world energy into the studio. She teaches students how to make movement feel punchy, dynamic, and purposeful without overloading the screen with unnecessary effects. She is particularly passionate about micro-interactions, color theory in motion, and helping students build pitch-ready demo reels that catch the eyes of creative directors.
+          </p>
+          <div class="story-philosophy">"If a frame doesn't serve the story or the emotion, it's just visual noise."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENTOR 3: Kong Jun Yang -->
+    <div class="mentor-block" id="mentor-jy">
+      <!-- Intro Frame (Pinned Sticky) -->
+      <div class="mentor-intro-frame" style="background-image: url('images/jy_background.png');">
+        <div class="intro-content">
+          <span class="label-mono" style="color: var(--sky-blue);">// TECHNICAL DIRECTOR</span>
+          <h2>Kong Jun Yang</h2>
+          <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+            <span class="tag active">VIDEO EDITING</span>
+            <span class="tag">COLOR GRADING</span>
+          </div>
+          <p class="intro-summary">Specialist in DaVinci Resolve color workflows, post-production audio mastering, and broadcast editorial management.</p>
+        </div>
+      </div>
+      <!-- Backstory Card (Slides up over intro) -->
+      <div class="mentor-story-card" style="background-image: url('images/jy_backstory.png');">
+        <div class="story-content">
+          <div class="story-title">// BACKGROUND STORY</div>
+          <p class="story-body">
+            Jun Yang’s passion for visual media started behind the camera, but his true craft was forged in the dark room of the editing suite. With years of experience managing post-production pipelines for broadcast media, documentaries, and indie short films, he understands how much a story is re-written on the timeline.
+            <br><br>
+            Specializing in DaVinci Resolve color architecture, surround-sound mixing, and post-production editorial workflows, Jun Yang treats color grading like fine art painting. He can spend hours dialing in the shadow tones of a single scene to evoke just the right mood. Students turn to him when their project is shot and animated, but needs that final polish to transform it into a cinematic experience.
+          </p>
+          <div class="story-philosophy">"Editing is the invisible rhythm of cinema; if the audience notices the cuts, you haven't finished the job."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENTOR 4: Hong Chee Ren -->
+    <div class="mentor-block" id="mentor-cr">
+      <!-- Intro Frame (Pinned Sticky) -->
+      <div class="mentor-intro-frame" style="background-image: url('images/cr_background.png');">
+        <div class="intro-content">
+          <span class="label-mono" style="color: var(--yellow);">// CONCEPT ARTIST</span>
+          <h2>Hong Chee Ren</h2>
+          <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+            <span class="tag active">2D ANIMATION</span>
+            <span class="tag">STORYBOARDING</span>
+          </div>
+          <p class="intro-summary">Focuses on visual storytelling, character concept designs, cinematic keyframes, and traditional frame-by-frame animation techniques.</p>
+        </div>
+      </div>
+      <!-- Backstory Card (Slides up over intro) -->
+      <div class="mentor-story-card" style="background-image: url('images/cr_backstory.png');">
+        <div class="story-content">
+          <div class="story-title">// BACKGROUND STORY</div>
+          <p class="story-body">
+            Chee Ren grew up with sketchbooks tucked under his arm, fascinated by traditional animation, wuxia visual aesthetics, and world-building through environmental concept art. After years of producing keyframes, character sheets, and storyboard animatics for indie games and animated shorts, he joined PIXEL to mentor the next generation of visual storytellers.
+            <br><br>
+            Whether he’s breaking down frame-by-frame timing or teaching the fundamentals of silhouette design and lighting composition, Chee Ren emphasizes narrative intent above technical perfection. He encourages students to look at the world around them—nature, architecture, classical art, and human expressions—to give their digital art depth and personal expression.
+          </p>
+          <div class="story-philosophy">"Before you render a single detail, make sure your silhouette tells a clear story."</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+    <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+
+      <!-- Left Column: Branding & Socials -->
+      <div class="footer-info">
+        <div class="footer-brand">PIXEL</div>
+        <p class="muted">Animation &amp; Multimedia Club</p>
+        <div class="social-links">
+          <a href="https://chat.whatsapp.com/Lg8gJl5Xru52lrucpBrVzS" aria-label="Whatsapp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/pixe.lclub?igsi=c2UzMmYwMGY0czd2" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" target="_blank" rel="noopener noreferrer"></i></a>
+          <a href="https://discord.gg/sAC37jRx9b" aria-label="Discord" target=" _blank" rel="noopener noreferrer"><i class="fa-brands fa-discord" target="_blank" rel="noopener noreferrer"></i></a>
+          <a href="https://github.com/PixelAnimationAndMultimeidaClub/Pixel-Club-site-2026" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+
+      <!-- Center/Right: Structured Navigation Columns -->
+      <div class="footer-nav-grid">
+        <div class="footer-col">
+          <span class="label-mono">Explore</span>
+          <a href="animation.html">Animation</a>
+          <a href="tutorials.html">Video Tutorials</a>
+          <a href="product.html">Our Products</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="label-mono">Community</span>
+          <a href="event.html">Upcoming Events</a>
+          <a href="blog.html">Blogs / News</a>
+          <a href="mentor.html">Our Teams</a>
+        </div>
+
+        <div class="footer-next">
+          <span class="label-mono">Up Next</span>
+          <a href="about.html" class="next-link">
+            <span>Learn More About Us</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <span class="label-mono">&copy; 2026 Animation & Multimedia Club. All rights reserved.</span>
+      <span class="label-mono">Built with frame precision</span>
+    </div>
+  </div>
+</footer> 
+
+  <!-- Scripts -->
+  <script src="default.js"></script>
+  <script src="mentor.js"></script>
+</body>
+</html>

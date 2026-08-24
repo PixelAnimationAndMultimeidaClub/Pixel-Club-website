@@ -1,0 +1,68 @@
+/* =========================================================
+   Navigation Bar & Scrub Bar
+   ========================================================= */
+.navbar {
+  background: var(--void);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: block;
+  transform: translateY(-1px);
+}
+
+.brand-text-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand-title {
+  font-family: var(--font-hero);
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--cloud);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.brand-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #4a90e2;
+  text-transform: uppercase;
+  margin-top: 3px;
+  line-height: 1;
+}
+
+.scrub-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+}
+
+.scrub-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--sky-blue, #38bdf8);
+  transition: width 0.1s ease-out;
+}

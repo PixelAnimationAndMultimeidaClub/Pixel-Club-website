@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Animation & Multimedia Club</title>
+  <link rel="icon" href="images/icon.svg" type="image/svg+xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@500;700&family=Golos+Text:wght@400..900&family=Press+Start+2P&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <!-- Logo and Brand Name -->
+      <a href="index.html" class="navbar-brand">
+        <!-- Replace logo.png with your actual logo file -->
+        <img src="images/pixel-logo.svg" alt="Logo" class="brand-logo">
+        <div class="brand-text">
+          <span class="brand-title">pixel</span>
+          <span class="brand-subtitle">animation & multimedia club</span>
+        </div>
+      </a>
+      
+      <!-- Hamburger Button for Mobile -->
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="navbar-nav" id="navbar-nav">
+        <a href="index.html" >Home</a>
+        <a href="about.html" class="active">About</a>
+        
+        <!-- Explore Dropdown -->
+        <div class="dropdown">
+          <a class="dropdown-toggle" id="explore-btn">Explore ▼</a>
+          <div class="dropdown-menu">
+            <a href="animation.html">Animation</a>
+            <a href="tutorials.html">Video</a>
+            <a href="product.html" >Product</a>
+          </div>
+        </div>
+        
+        <a href="event.html">Event</a>
+        <a href="blog.html">Blog</a>
+        <a href="mentor.html">Mentor</a>
+      </div>
+    </div>
+    <!-- Scrub Bar Indicator -->
+    <div class="scrub-bar"><div class="scrub-fill" id="scrubFill"></div></div>
+  </nav>
+
+  <main>
+  <section class="section section-dark hero-about">
+  <div class="container hero-about-grid">
+    <!-- Left Column: Content -->
+    <div class="hero-content">
+      <h2 class="hero-title">Welcome to Pixel</h2>
+      <p class="hero-description">
+        Pixel is an Animation and Multimedia Club that brings together creative minds who are passionate about animation, digital art, video and multimedia.
+      </p>
+      <div class="label-mono hero-tags">
+        LEARN &bull; CREATE &bull; SHARE
+      </div>
+      <button class="btn btn-primary" id="openJoinModal">Join the community</button>
+    </div>
+
+    <!-- Right Column: Visual Graphic & Bullet Sequence -->
+    <div class="hero-visual">
+      <!-- Tilted Card Stack -->
+      <div class="hero-card-wrapper">
+        <div class="hero-card-shadow"></div>
+        <div class="hero-card">
+          <div class="pixel-logo-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <rect x="8" y="10" width="32" height="30" rx="10" fill="#3DB8FF"/>
+              <rect x="14" y="4" width="4" height="8" rx="2" fill="#FFD93D"/>
+              <rect x="30" y="4" width="4" height="8" rx="2" fill="#FFD93D"/>
+              <circle cx="18" cy="22" r="3" fill="#15131F"/>
+              <circle cx="30" cy="22" r="3" fill="#15131F"/>
+              <circle cx="19" cy="21" r="1" fill="#FFFFFF"/>
+              <circle cx="31" cy="21" r="1" fill="#FFFFFF"/>
+              <path d="M18 30 C 21 34, 27 34, 30 30" stroke="#15131F" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+          <div class="pixel-logo-text">
+            <h3>PIXEL</h3>
+            <span class="label-mono">ANIMATION AND MULTIMEDIA CLUB</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sequential Enlarging Bullets Container -->
+      <div class="bullet-sequence">
+        <div class="bullet-card">
+          <span class="dot dot-blue"></span>
+        </div>
+        <div class="bullet-card">
+          <span class="dot dot-yellow"></span>
+        </div>
+        <div class="bullet-card">
+          <span class="dot dot-blue sm"></span>
+        </div>
+        <div class="bullet-card">
+          <span class="dot dot-yellow sm"></span>
+        </div>
+        <div class="bullet-card">
+          <span class="dot dot-blue"></span>
+        </div>
+        <div class="bullet-card">
+          <span class="dot dot-yellow lg"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section section-what-is">
+  <br>
+  <div class="container">
+    <!-- Section Header -->
+    <div class="what-is-header">
+      <h2>WHAT IS PIXEL?</h2>
+      <p class="muted">A space to create, explore and connect.</p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="what-is-grid">
+      <div class="card focus-card">
+        <span class="label-mono card-label">01 / CREATE</span>
+        <h3>Turn ideas into reality.</h3>
+        <p>Pixel gives members a space to create and experiment with animation, digital art and multimedia.</p>
+      </div>
+
+      <div class="card focus-card">
+        <span class="label-mono card-label">02 / EXPLORE</span>
+        <h3>Discover new ways to express yourself.</h3>
+        <p>Explore different creative tools, techniques and forms of multimedia storytelling.</p>
+      </div>
+
+      <div class="card focus-card">
+        <span class="label-mono card-label">03 / CONNECT</span>
+        <h3>Create with people who share your passion.</h3>
+        <p>Meet other creative minds, collaborate on projects and share ideas through the Pixel community.</p>
+      </div>
+    </div>
+
+    <!-- Section Sub-banner -->
+    <div class="what-is-footer">
+      <h2>More than a club. A creative community.</h2>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark creative-mission-section">
+  <br>
+  <div class="container">
+    
+    <!-- Part 1: Mission & Vision -->
+    <div class="mission-vision-block">
+      <div class="section-header">
+        <h2 class="section-title">Mission &amp; Vision</h2>
+        <p class="muted">Ready to Start Your Creative Journey?</p>
+      </div>
+
+      <div class="mission-vision-grid">
+        <div class="mv-card">
+          <h3 class="label-mono mv-title">OUR MISSION</h3>
+          <p>To empower students through hands-on learning and creative freedom in animation and art.</p>
+        </div>
+
+        <div class="mv-divider" aria-hidden="true"></div>
+
+        <div class="mv-card">
+          <h3 class="label-mono mv-title">OUR VISION</h3>
+          <p>To build a vibrant creative hub where innovative ideas transform into impactful digital stories.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Divider Line -->
+    <hr class="section-separator" />
+
+    <!-- Part 2: Our Creative World -->
+    <div class="creative-world-block">
+      <div class="section-header">
+        <h2 class="creative-heading">OUR CREATIVE WORLD</h2>
+        <p class="section-subtitle">Where creativity takes different forms.</p>
+      </div>
+
+      <div class="creative-grid">
+        <!-- Card 1: Animation -->
+        <a href="animation.html" class="creative-card">
+          <img src="images/pixel_character.png" alt="Animation visual" class="card-top-image" />
+          <div class="card-inner-content">
+            <span class="label-mono card-num">01</span>
+            <h3 class="card-title">ANIMATION</h3>
+            <p class="card-desc">Bring stories to life through movement, characters and visual storytelling.</p>
+            <span class="label-mono card-tags">2D ANIMATION &bull; CHARACTER DESIGN &bull; MOTION</span>
+          </div>
+          <span class="label-mono card-link">EXPLORE PROJECTS &rarr;</span>
+        </a>
+
+        <!-- Card 2: Multimedia -->
+        <a href="product.html" class="creative-card">
+          <img src="images/play_button.png" alt="Multimedia visual" class="card-top-image" />
+          <div class="card-inner-content">
+            <span class="label-mono card-num">02</span>
+            <h3 class="card-title">MULTIMEDIA</h3>
+            <p class="card-desc">Combine video, audio and visuals to create engaging multimedia experiences.</p>
+            <span class="label-mono card-tags">VIDEO &bull; AUDIO &bull; VISUALS</span>
+          </div>
+          <span class="label-mono card-link">SEE PRODUCTIONS &rarr;</span>
+        </a>
+
+        <!-- Card 3: Video Editing -->
+        <a href="tutorials.html" class="creative-card">
+          <img src="images/pixel_video.png" alt="Video Editing visual" class="card-top-image" />
+          <div class="card-inner-content">
+            <span class="label-mono card-num">03</span>
+            <h3 class="card-title">VIDEO EDITING</h3>
+            <p class="card-desc">Learn how to transform raw footage into engaging visual stories.</p>
+            <span class="label-mono card-tags">EDITING &bull; TRANSITIONS &bull; EFFECTS</span>
+          </div>
+          <span class="label-mono card-link">WATCH TUTORIALS &rarr;</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div id="joinModal" class="modal-overlay">
+<div class="modal-card">
+<button class="modal-close" id="closeJoinModal" aria-label="Close">&times;</button>
+<h2>Join the Community</h2>
+<p class="muted">Fill out the form below to register as an official member of PIXEL.</p>
+
+<!-- Success Banner Card -->
+<div id="successCard" class="success-banner" style="display: none;">
+<i class="fa-solid fa-circle-check"></i>
+<div>
+    <strong>Registration Successful!</strong>
+    <p>Welcome to PIXEL. We have saved your spot.</p>
+</div>
+</div>
+
+<form id="joinForm" class="join-form">
+<div class="form-group">
+    <label class="label-mono" for="fullName">Full Name</label>
+    <input type="text" id="fullName" name="fullName" placeholder="e.g. Alex Mercer" required>
+</div>
+
+<div class="form-group">
+    <label class="label-mono" for="email">Email Address</label>
+    <input type="email" id="email" name="email" placeholder="alex@example.com" required>
+</div>
+
+<div class="form-group">
+    <label class="label-mono" for="interest">Primary Interest</label>
+    <select id="interest" name="interest" required>
+    <option value="" disabled selected>Select your field</option>
+    <option value="Animation">Animation</option>
+    <option value="Video Editing">Video Editing</option>
+    <option value="Digital Art">Digital Art &amp; Design</option>
+    <option value="Product Design">Product Design</option>
+    </select>
+</div>
+
+<button type="submit" class="btn btn-primary" id="submitBtn">Submit Registration</button>
+</form>
+</div>
+</div>
+</main>
+
+    <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+
+      <!-- Left Column: Branding & Socials -->
+      <div class="footer-info">
+        <div class="footer-brand">PIXEL</div>
+        <p class="muted">Animation &amp; Multimedia Club</p>
+        <div class="social-links">
+          <a href="https://chat.whatsapp.com/Lg8gJl5Xru52lrucpBrVzS" aria-label="Whatsapp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/pixe.lclub?igsi=c2UzMmYwMGY0czd2" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" target="_blank" rel="noopener noreferrer"></i></a>
+          <a href="https://discord.gg/sAC37jRx9b" aria-label="Discord" target=" _blank" rel="noopener noreferrer"><i class="fa-brands fa-discord" target="_blank" rel="noopener noreferrer"></i></a>
+          <a href="https://github.com/PixelAnimationAndMultimeidaClub/Pixel-Club-site-2026" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+
+      <!-- Center/Right: Structured Navigation Columns -->
+      <div class="footer-nav-grid">
+        <div class="footer-col">
+          <span class="label-mono">Explore</span>
+          <a href="animation.html">Animation</a>
+          <a href="tutorials.html">Video Tutorials</a>
+          <a href="product.html">Our Products</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="label-mono">Community</span>
+          <a href="event.html">Upcoming Events</a>
+          <a href="blog.html">Blogs / News</a>
+          <a href="mentor.html">Our Teams</a>
+        </div>
+
+        <div class="footer-next">
+          <span class="label-mono">Up Next</span>
+          <a href="about.html" class="next-link">
+            <span>Learn More About Us</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <span class="label-mono">&copy; 2026 Animation & Multimedia Club. All rights reserved.</span>
+      <span class="label-mono">Built with frame precision</span>
+    </div>
+  </div>
+</footer> 
+
+  <!-- Scripts -->
+  <script src="default.js"></script>
+  <script src="about.js"></script>
+</body>
+</html>

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product | Animation & Multimedia Club</title>
+  <link rel="icon" href="images/icon.svg" type="image/svg+xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@500;700&family=Golos+Text:wght@400..900&family=Press+Start+2P&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="product.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <!-- Logo and Brand Name -->
+      <a href="index.html" class="navbar-brand">
+        <!-- Replace logo.png with your actual logo file -->
+        <img src="images/pixel-logo.svg" alt="Logo" class="brand-logo">
+        <div class="brand-text">
+          <span class="brand-title">pixel</span>
+          <span class="brand-subtitle">animation & multimedia club</span>
+        </div>
+      </a>
+      
+      <!-- Hamburger Button for Mobile -->
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="navbar-nav" id="navbar-nav">
+        <a href="index.html" >Home</a>
+        <a href="about.html">About</a>
+        
+        <!-- Explore Dropdown -->
+        <div class="dropdown">
+          <a class="active dropdown-toggle" id="explore-btn">Explore ▼</a>
+          <div class="dropdown-menu">
+            <a href="animation.html">Animation</a>
+            <a href="tutorials.html">Video</a>
+            <a href="product.html" class="active">Product</a>
+          </div>
+        </div>
+        
+        <a href="event.html">Event</a>
+        <a href="blog.html">Blog</a>
+        <a href="mentor.html">Mentor</a>
+      </div>
+    </div>
+    
+    <!-- Scrub Bar Indicator -->
+    <div class="scrub-bar"><div class="scrub-fill" id="scrubFill"></div></div>
+  </nav>
+
+  <section class="section section-dark hero-section">
+    <div class="hero-bg-overlay"></div>
+    <div class="container">
+      <span class="label-mono" style="font-size: 0.75rem; letter-spacing: 0.12em; display: inline-block; margin-top: 10px; margin-bottom: 5px; color: var(--yellow, #FFD93D); text-transform: uppercase; font-family: var(--font-mono);">Previous Work</span>
+      <h1>Multimedia Productions<br>| PIXEL Club</h1>
+      <p>Filter through our club's latest multimedia renders, animations, and video projects.</p>
+    </div>
+  </section>
+  <!-- Main Page Content (Change this per page) -->
+  <main class="section">
+  <section class="section" style="color:var(--Cloud)">
+    <br>
+    <div class="container">
+      <!-- Search & Filter Row -->
+      <div class="tutorial-search-filter-row">
+        <!-- Search Box -->
+        <div class="search-box-wrapper">
+          <svg class="search-icon-left" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="productSearch" class="search-input" placeholder="Search productions by title, description...">
+          <button type="button" id="searchClearBtn" class="search-clear-btn" aria-label="Clear search">×</button>
+        </div>
+
+        <!-- Single-Layer Dropdown Filter Wrapper -->
+        <div class="advanced-filter-wrapper">
+          <button type="button" id="filterDropdownToggle" class="filter-icon-btn" aria-label="Toggle filters">
+          <img src="images/filter.png" alt="Filter Icon" style="width: 24px; height: 24px; object-fit: contain">
+          </button>
+
+          <!-- Single Dropdown Menu -->
+          <div id="filterDropdownMenu" class="multi-layer-dropdown">
+            <div class="dropdown-category-title">Categories</div>
+            <a href="#" class="dropdown-item filter-option" data-category="2d">2D Animation</a>
+            <a href="#" class="dropdown-item filter-option" data-category="3d">3D Render</a>
+            <a href="#" class="dropdown-item filter-option" data-category="video">Explanation</a>
+            <a href="#" class="dropdown-item filter-option" data-category="blender">Blender Studio</a>
+            <a href="#" class="dropdown-item filter-option" data-category="gobelins">GOBELINS Paris</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Filter Pills Container -->
+      <div id="activeFiltersContainer" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; justify-content: center;"></div>
+
+      <div id="noResults" class="no-results" style="display: none;">
+        <div class="no-results-icon">🔍</div>
+        <h3>No Productions Found</h3>
+        <p>No multimedia projects match your current search or filter criteria. Try adjusting your terms or clearing your filters.</p>
+      </div>
+
+      <!-- Gallery Grid is INSIDE the container -->
+      <div class="gallery-grid" id="galleryGrid">
+
+        <div class="card" 
+     data-category="blender 3d"
+     data-abstract="In an energy-scarce dystopia, an old destitute man breaks into a battery factory..." 
+     data-yt-id="UXqq0ZvbOnk" 
+     data-link="https://www.youtube.com/watch?v=UXqq0ZvbOnk">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/UXqq0ZvbOnk/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/DdqXrXEnDDU/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/CHARGE - Blender Open Movie.mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">CHARGE - 3D Animation Short Film</h3>
+    <div class="card-tags">
+      <span class="tag">Blender Studio</span>
+      <span class="tag">3D Render</span>
+    </div>
+    <p>An action-packed Sci-Fi short showcasing high-fidelity photorealistic lighting, procedural textures, and robotic combat.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+
+        <div class="card" 
+     data-category="gobelins 2d" 
+     data-abstract="A traditional dance troupe prepares for the opening of the Summer Solstice Festival. The group is scheduled to take the stage in a few minutes, but one member is missing." 
+     data-yt-id="jKh-DP89FPY" 
+     data-link="https://www.youtube.com/watch?v=jKh-DP89FPY">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/jKh-DP89FPY/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/jKh-DP89FPY/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/SUNDOWN - Animation Short Film 2020 - GOBELINS.mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">SUNDOWN - 2D Animation Short Film</h3>
+    <div class="card-tags">
+      <span class="tag">GOBELINS Paris</span>
+      <span class="tag">2D Animation</span>
+    </div>
+    <p>A colorful Gobelins short exploring character relationships through fluid traditional frame-by-frame animation.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+
+        <div class="card" 
+     data-category="video" 
+     data-abstract="Multimedia refers to the use of multiple forms of communication, such as text, images, video, audio, and interactive elements, to convey information. It enhances engagement and comprehension by combining different sensory experiences. Multimedia is widely used in education, entertainment, marketing, and digital media." 
+     data-yt-id="UbFlYjNxUxw" 
+     data-link="https://www.youtube.com/watch?v=UbFlYjNxUxw">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/UbFlYjNxUxw/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/UbFlYjNxUxw/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/Multimedia Definition and Examples (Easiest Explanation).mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">Multimedia Definition and Examples</h3>
+    <div class="card-tags">
+      <span class="tag">Explanation</span>
+    </div>
+    <p>An educational breakdown covering the fundamental concepts, key components, pros, and cons of multimedia.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+
+  <div class="card" 
+     data-category="blender 3d" 
+     data-abstract="The story of a shepherd girl and her dog, who face ancient spirits in order to continue the cycle of life. This poetic and visually stunning short film was written and directed by Andy Goralczyk, inspired by his childhood in the mountains of Germany." 
+     data-yt-id="WhWc3b3KhnY" 
+     data-link="https://www.youtube.com/watch?v=WhWc3b3KhnY">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/WhWc3b3KhnY/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/WhWc3b3KhnY/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/Spring - Blender Open Movie.mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">Spring - 3D Animation Short Film</h3>
+    <div class="card-tags">
+      <span class="tag">Blender Studio</span>
+      <span class="tag">3D Render</span>
+    </div>
+    <p>A poetic fantasy short about a young shepherdess and her dog confronting winter spirits to bring spring to life.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+
+  <div class="card" 
+     data-category="blender 3d" 
+     data-abstract="An 80's-inspired horror comedy, set in Britain: When a group of rowdy teenagers trek into an isolated forest, they discover peaceful mushroom creatures that turn out to be an unexpected force of nature." 
+     data-yt-id="_cMxraX_5RE" 
+     data-link="https://www.youtube.com/watch?v=_cMxraX_5RE">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/_cMxraX_5RE/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/_cMxraX_5RE/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/Sprite Fright - Blender Open Movie.mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">Sprite Fright - 3D Animation Short Film</h3>
+    <div class="card-tags">
+      <span class="tag">Blender Studio</span>
+      <span class="tag">3D Render</span>
+    </div>
+    <p>An 80s-inspired horror-comedy following a group of teenagers who encounter mischievous forest creatures during a cleanup.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+
+  <div class="card" 
+     data-category="blender 3d" 
+     data-abstract="A pilot episode of a animated series revolving around the pet dog Dixey and his shenanigans in 1950's American suburbia." 
+     data-yt-id="apiu3pTIwuY" 
+     data-link="https://www.youtube.com/watch?v=apiu3pTIwuY">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/apiu3pTIwuY/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/apiu3pTIwuY/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/The Daily Dweebs - 8K UHD Stereoscopic 3D.mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">The Daily Dweebs - 3D Animation Short Video</h3>
+    <div class="card-tags">
+      <span class="tag">Blender Studio</span>
+      <span class="tag">3D Render</span>
+    </div>
+    <p>A slapstick 1950s-styled character animation study featuring a dog's humorous struggle to fetch a ball.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+
+  <div class="card" 
+     data-category="blender 3d" 
+     data-abstract="The Caminandes cartoon series we get to know our hero Koro even better! It's winter in Patagonia, food is getting scarce. Koro the Llama engages with Oti the pesky penguin in an epic fight over that last tasty berry." 
+     data-yt-id="SkVqJ1SGeL0" 
+     data-link="https://www.youtube.com/watch?v=SkVqJ1SGeL0">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/SkVqJ1SGeL0/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/SkVqJ1SGeL0/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/Caminandes 3 Llamigos.mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">Caminandes 3: Llamigos - 3D Animation Short Video</h3>
+    <div class="card-tags">
+      <span class="tag">Blender Studio</span>
+      <span class="tag">3D Render</span>
+    </div>
+    <p>A classic slapstick cartoon following Koro the llama on a chaotic quest to cross an obstacle for food.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+
+  <div class="card" 
+     data-category="gobelins 2d" 
+     data-abstract="Alex, an art student, dreams of joining Eve, the &quot;Elite's Visual School&quot;. Together with her best friend Kimmy, they train hard to pass the notoriously impossible entrance exam. Alex's training turns into an obsession, compromising her friendship with Kimmy." 
+     data-yt-id="LWpRdTMjEmM" 
+     data-link="https://www.youtube.com/watch?v=LWpRdTMjEmM">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/LWpRdTMjEmM/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/LWpRdTMjEmM/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/TRY HARD - Animation Short Film 2023 - GOBELINS.mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">TRY HARD - 2D Animation Short Film</h3>
+    <div class="card-tags">
+      <span class="tag">GOBELINS Paris</span>
+      <span class="tag">2D Animation</span>
+    </div>
+    <p>A high-energy 2D short focusing on intense competitive drive, dynamic camera movement, and smear frames.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+
+
+  <div class="card" 
+     data-category="gobelins 2d" 
+     data-abstract="14-year-old Zain, a Palestinian swimming champion, faces war and man-made famine. He becomes the sole caregiver to his little brother. When aid drops into the sea, desperate for food, Zain is forced to swim—not for passion, but for survival." 
+     data-yt-id="CsBa8HbMgh8" 
+     data-link="https://www.youtube.com/watch?v=CsBa8HbMgh8">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/CsBa8HbMgh8/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/CsBa8HbMgh8/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/GAUZE - Animation Short Film 2025 - GOBELINS.mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">GAUZE - 2D Animation Short Film</h3>
+    <div class="card-tags">
+      <span class="tag">GOBELINS Paris</span>
+      <span class="tag">2D Animation</span>
+    </div>
+    <p>A dramatic character-driven short highlighting expressive linework, narrative depth, and dramatic lighting.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+
+  <div class="card" 
+     data-category="gobelins 2d" 
+     data-abstract="A gifted musician's pursuit of fame traps him in the audience's demands—until a broken violin forces him to choose between hollow applause and true artistic freedom." 
+     data-yt-id="O515YeHQhYE" 
+     data-link="https://www.youtube.com/watch?v=O515YeHQhYE">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/O515YeHQhYE/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/O515YeHQhYE/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/NICCOLO - Animation Short Film 2025 - GOBELINS.mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">NICCOLO - 2D Animation Short Film</h3>
+    <div class="card-tags">
+      <span class="tag">GOBELINS Paris</span>
+      <span class="tag">2D Animation</span>
+    </div>
+    <p>An atmospheric narrative short demonstrating stylized layout design and character performance.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+
+  <div class="card" 
+     data-category="gobelins 2d" 
+     data-abstract="Jaya sets out to hunt the spirit of the mountain, a sacred beast with valuable feathers. As she approaches the heart of the mountain, she's interrupted by her younger sister, Amala, devout on protecting the spirit." 
+     data-yt-id="eB9JdjNCiiA" 
+     data-link="https://www.youtube.com/watch?v=eB9JdjNCiiA">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/eB9JdjNCiiA/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/eB9JdjNCiiA/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/TEARS OF THE MOUNTAIN - Animation Short Film 2025 - GOBELINS.mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">TEARS OF THE MOUNTAIN - 2D Animation Short Film</h3>
+    <div class="card-tags">
+      <span class="tag">GOBELINS Paris</span>
+      <span class="tag">2D Animation</span>
+    </div>
+    <p>A mythic story exploring nature, destruction, and spiritual rebirth through traditional 2D art.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+
+  <div class="card" 
+     data-category="video" 
+     data-abstract="Discover what multimedia really means and why it's essential in today's digital world. From text and images to audio, video, and animation—learn how these elements come together to create engaging experiences in education, entertainment, and beyond." 
+     data-yt-id="WVHkR3w47pY" 
+     data-link="https://www.youtube.com/watch?v=WVHkR3w47pY">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/WVHkR3w47pY/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/WVHkR3w47pY/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/What is Multimedia.mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">Understand the Multimedia Stand</h3>
+    <div class="card-tags">
+      <span class="tag">Explanation</span>
+    </div>
+    <p>A foundational look at how multimedia integration functions across digital platforms.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+
+  <div class="card" 
+     data-category="video" 
+     data-abstract="An overview of how animation is made with traditional, 2D-rigged, stop-motion, and CG techniques." 
+     data-yt-id="dGGU4rAkShE" 
+     data-link="https://www.youtube.com/watch?v=dGGU4rAkShE">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/dGGU4rAkShE/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/dGGU4rAkShE/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/How Does Animation Work.mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">Animation Describe in Multimedia</h3>
+    <div class="card-tags">
+      <span class="tag">Explanation</span>
+    </div>
+    <p>An introduction explaining frame rates, timing principles, and the role of motion in digital media.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+
+  <div class="card" 
+     data-category="video" 
+     data-abstract="Our Audio & Multimedia division has been researching audio coding techniques and multimedia technology for more than 25 years, and is widely known for its significant role in the development of the mp3 and MPEG AAC standards. In this video Mercè Serra Joan offers a deeper insight in some parts of the division's work and how it is applied in the real world." 
+     data-yt-id="dBFpneOm55g" 
+     data-link="https://www.youtube.com/watch?v=dBFpneOm55g">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/dBFpneOm55g/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/dBFpneOm55g/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/What we do Audio & Multimedia.mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">Audio Stand in Multimedia</h3>
+    <div class="card-tags">
+      <span class="tag">Explanation</span>
+    </div>
+    <p>An overview of sound design, acoustics, voiceovers, and audio editing workflows.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+
+  <div class="card" 
+     data-category="video" 
+     data-abstract="Ever wondered about the intricacies behind &quot;What is Multimedia Video Production?&quot; Dive deep into this insightful video as we demystify the comprehensive world of multimedia and its expansive applications. From basic animated texts to rich historical documentaries, discover how multimedia shapes the way stories are told and perceived." 
+     data-yt-id="EL7QakIh7Ps" 
+     data-link="https://www.youtube.com/watch?v=EL7QakIh7Ps">
+ 
+  <div class="video-preview-wrapper">
+    <img class="preview-thumb" src="https://img.youtube.com/vi/EL7QakIh7Ps/maxresdefault.jpg" alt="Preview cover"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/EL7QakIh7Ps/mqdefault.jpg';">   
+    <video 
+      class="preview-video"
+      src="videos/multimedia/WHAT IS MULTIMEDIA VIDEO PRODUCTION.mp4"
+      muted 
+      loop 
+      playsinline 
+      preload="none">
+    </video>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="card-title">Video Production</h3>
+    <div class="card-tags">
+      <span class="tag">Explanation</span>
+    </div>
+    <p>A quick guide to the core stages of video creation, from pre-production planning to post-production editing.</p>
+    <a href="#" class="watch-reel-btn">Watch Reel</a>
+  </div>
+</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="detailModal">
+  <div class="modal-content">
+    <button class="modal-close" id="closeModal">&times;</button>
+    <div class="modal-video-container" style="aspect-ratio: 16/9; margin-bottom: 16px;">
+      <iframe id="modalYoutubeIframe" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <h2 id="modalTitle" >Project Title</h2>
+    <p class="label-mono" id="modalCategory" style="margin-bottom: 16px;">Category</p>
+    <p id="modalAbstract">Project abstract goes here.</p>
+    <br>
+    <a href="#" id="modalLink" class="btn btn-primary" target="_blank">Watch on YouTube</a>
+  </div>
+</div>
+  </main>
+
+    <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+
+      <!-- Left Column: Branding & Socials -->
+      <div class="footer-info">
+        <div class="footer-brand">PIXEL</div>
+        <p class="muted">Animation &amp; Multimedia Club</p>
+        <div class="social-links">
+          <a href="https://chat.whatsapp.com/Lg8gJl5Xru52lrucpBrVzS" aria-label="Whatsapp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/pixe.lclub?igsi=c2UzMmYwMGY0czd2" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" target="_blank" rel="noopener noreferrer"></i></a>
+          <a href="https://discord.gg/sAC37jRx9b" aria-label="Discord" target=" _blank" rel="noopener noreferrer"><i class="fa-brands fa-discord" target="_blank" rel="noopener noreferrer"></i></a>
+          <a href="https://github.com/PixelAnimationAndMultimeidaClub/Pixel-Club-site-2026" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+
+      <!-- Center/Right: Structured Navigation Columns -->
+      <div class="footer-nav-grid">
+        <div class="footer-col">
+          <span class="label-mono">Explore</span>
+          <a href="animation.html">Animation</a>
+          <a href="tutorials.html">Video Tutorials</a>
+          <a href="product.html">Our Products</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="label-mono">Community</span>
+          <a href="event.html">Upcoming Events</a>
+          <a href="blog.html">Blogs / News</a>
+          <a href="mentor.html">Our Teams</a>
+        </div>
+
+        <div class="footer-next">
+          <span class="label-mono">Up Next</span>
+          <a href="about.html" class="next-link">
+            <span>Learn More About Us</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <span class="label-mono">&copy; 2026 Animation & Multimedia Club. All rights reserved.</span>
+      <span class="label-mono">Built with frame precision</span>
+    </div>
+  </div>
+</footer> 
+
+  <!-- Scripts -->
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="default.js"></script>
+  <script src="product.js"></script>
+</body>
+</html>

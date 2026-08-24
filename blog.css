@@ -1,0 +1,370 @@
+@import url(navbar.css);
+  /* Page-Specific Layout & Overrides: Blog & News */
+  
+  /* 1. Mobile Navigation & Touch Enhancements */
+  .navbar-nav {
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  /* 2. Scrollable Filter Bar for Mobile */
+  .filter-bar {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filter-bar::-webkit-scrollbar {
+    height: 4px;
+  }
+  .filter-bar::-webkit-scrollbar-thumb {
+    background: var(--cloud-dim);
+    border-radius: 4px;
+  }
+
+  .filter-btn {
+    background: #ffffff;
+    border: 1px solid var(--cloud-dim);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: var(--ink);
+    flex-shrink: 0;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .filter-btn:hover, 
+  .filter-btn.active {
+    background: var(--sky-blue);
+    border-color: var(--sky-blue);
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    perspective: 1000px;
+  }
+
+  .article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Accessible Tag Contrasts */
+  .tag.active {
+    background: #1e293b;
+    color: #ffffff;
+  }
+  .tag-green {
+    background-color: #065f46;
+    color: #ffffff;
+    border: 1px solid #047857;
+  }
+
+  /* Card Link Wrapper Styles */
+  .card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+  }
+
+  .card-link:focus-visible {
+    outline: 2px solid var(--sky-blue);
+    border-radius: var(--radius);
+  }
+
+  .read-more {
+    color: var(--sky-blue);
+    font-weight: bold;
+    display: inline-block;
+    transition: color 0.2s ease;
+  }
+
+  /* Base Card Styles with Solid Fallback for Lazy Images */
+  .card {
+    position: relative;
+    background-color: var(--void);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    color: #ffffff;
+    border: 1px solid var(--void-dim);
+    transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1), 
+                transform 0.3s cubic-bezier(0.2, 0, 0.2, 1), 
+                border-color 0.25s ease, 
+                box-shadow 0.25s ease;
+    will-change: transform, opacity;
+  }
+
+  /* Enhanced Contrast Overlay */
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 13, 24, 0.82) 0%, rgba(15, 13, 24, 0.96) 100%);
+    transition: background 0.3s ease;
+    z-index: 1;
+  }
+
+  .card > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .card h3 {
+    color: #ffffff;
+    transition: color 0.2s ease;
+  }
+
+  .card p {
+    color: #E2E0EB;
+  }
+
+  .card .label-mono {
+    color: #A5A1B8;
+  }
+
+  /* Hover State */
+  .card-link:hover .card {
+    transform: scale(1.03) translateY(-4px) !important;
+    border-color: var(--sky-blue);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  }
+
+  .card-link:hover .card::before {
+    background: linear-gradient(180deg, rgba(15, 13, 24, 0.65) 0%, rgba(15, 13, 24, 0.90) 100%);
+  }
+
+  .card-link:hover h3, 
+  .card-link:hover .read-more {
+    color: var(--sky-blue);
+  }
+
+  /* Scroll Reveal States */
+  .card.scroll-reveal {
+    opacity: 0;
+    transform: translateY(60px) scale(0.92);
+  }
+  .card.scroll-reveal.is-in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Filter Hiding States */
+  .card.hide {
+    opacity: 0 !important;
+    transform: scale(0.85) translateY(20px) !important;
+    pointer-events: none;
+  }
+  .card-link.is-hidden,
+  .card.is-hidden {
+    display: none !important;
+  }
+
+  /* =========================================================
+   Search Bar & Filter Row Styles (Matching Animation Pages)
+   ========================================================= */
+.tutorial-search-filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 0 !important;
+  margin-bottom: 24px !important;
+  width: 100%;
+}
+
+.search-box-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 540px;
+  height: 44px;
+  background-color: #1c1a29;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(21, 19, 31, 0.05);
+  border-radius: 999px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-box-wrapper:focus-within {
+  border-color: var(--sky-blue, #38bdf8);
+  box-shadow: 0 0 0 1px var(--sky-blue, #38bdf8);
+}
+
+.search-icon-left {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888888;
+  pointer-events: none;
+}
+
+.search-input {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  color: #ffffff;
+  font-size: 0.9rem;
+  padding: 0 16px 0 46px;
+  font-family: var(--font-body);
+}
+
+.search-input::placeholder {
+  color: #888888;
+}
+
+.search-clear-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #aaaaaa;
+  padding: 8px;
+  margin-right: 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  line-height: 0;
+  flex-shrink: 0;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.search-clear-btn:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.search-clear-btn.active {
+  display: flex;
+}
+
+/* =========================================================
+   Filter Dropdown Styles
+   ========================================================= */
+.advanced-filter-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+#filterDropdownToggle.filter-icon-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  transition: opacity 0.2s ease !important;
+}
+
+#filterDropdownToggle.filter-icon-btn:hover {
+  opacity: 0.7;
+}
+
+.multi-layer-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background-color: #ffffff;
+  border: 1.5px solid rgba(21, 19, 31, 0.15);
+  border-radius: var(--radius);
+  min-width: 190px !important;
+  box-shadow: 0 12px 30px rgba(21, 19, 31, 0.15);
+  z-index: 200;
+  padding: 8px 0;
+}
+
+.multi-layer-dropdown.show {
+  display: block !important;
+}
+
+.dropdown-category-title {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--void, #15131F);
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-item:hover {
+  background-color: var(--cloud, #F6F4EF) !important;
+  color: var(--sky-blue, #38bdf8) !important;
+}
+
+.filter-option.active {
+  background-color: #38bdf8 !important;
+  color: #ffffff !important;
+}
+
+/* =========================================================
+   Active Filter Pill Styles
+   ========================================================= */
+.active-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--void, #15131F);
+  color: var(--cloud, #F6F4EF);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.active-filter-pill .remove-filter {
+  background: transparent;
+  border: none;
+  color: var(--cloud, #F6F4EF);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s ease;
+}
+
+.active-filter-pill .remove-filter:hover {
+  opacity: 0.7;
+}

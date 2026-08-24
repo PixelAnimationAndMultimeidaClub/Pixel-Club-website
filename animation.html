@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation | Animation & Multimedia Club</title>
+  <link rel="icon" href="images/icon.svg" type="image/svg+xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@500;700&family=Golos+Text:wght@400..900&family=Press+Start+2P&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animation.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <!-- Logo and Brand Name -->
+      <a href="index.html" class="navbar-brand">
+        <!-- Replace logo.png with your actual logo file -->
+        <img src="images/pixel-logo.svg" alt="Logo" class="brand-logo">
+        <div class="brand-text">
+          <span class="brand-title">pixel</span>
+          <span class="brand-subtitle">animation & multimedia club</span>
+        </div>
+      </a>
+      
+      <!-- Hamburger Button for Mobile -->
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="navbar-nav" id="navbar-nav">
+        <a href="index.html" >Home</a>
+        <a href="about.html">About</a>
+        
+        <!-- Explore Dropdown -->
+        <div class="dropdown">
+          <a class="active dropdown-toggle" id="explore-btn">Explore ▼</a>
+          <div class="dropdown-menu">
+            <a href="animation.html" class="active">Animation</a>
+            <a href="tutorials.html">Video</a>
+            <a href="product.html">Product</a>
+          </div>
+        </div>
+        
+        <a href="event.html">Event</a>
+        <a href="blog.html">Blog</a>
+        <a href="mentor.html">Mentor</a>
+      </div>
+    </div>
+    <!-- Scrub Bar Indicator -->
+      <div class="scrub-bar"><div class="scrub-fill" id="scrubFill"></div></div>
+  </nav>
+
+ <!-- Hero Section (Dark Section) -->
+  <section class="section section-dark hero-section">
+    <div class="hero-bg-overlay"></div>
+    <div class="container">
+      <span class="label-mono">Showcase Archive</span>
+      <h1>Featured<br>Animation Projects</h1>
+      <p>Explore creative student reels, 3D short films, frame-by-frame 2D animation, and motion design assets.</p>
+    </div>
+  </section>
+
+  <!-- Gallery Section (Light Section) -->
+  <main class="section">
+    <div class="container">
+
+      <!-- Search & Filter Row -->
+      <div class="tutorial-search-filter-row" style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 0; margin-bottom: 12px; flex-wrap: wrap; width: 100%;">
+
+        <!-- Search Box Container -->
+        <div class="search-box-wrapper" style="flex: 1; max-width: 540px;">
+          <svg class="search-icon-left" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 16px; color: #888888; flex-shrink: 0; pointer-events: none;">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="projectSearch" class="search-input" placeholder="Search projects by title, software, style..." autocomplete="off">
+          <button type="button" id="searchClearBtn" class="search-clear-btn" aria-label="Clear search">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+          </button>
+        </div>
+
+        <!-- Filter Icon Toggle & Dropdown -->
+        <div class="advanced-filter-wrapper" style="position: relative; display: inline-block;">
+          <button type="button" id="filterDropdownToggle" class="filter-toggle-btn" aria-label="Filter projects" style="display: inline-flex; align-items: center; justify-content: center; background: transparent; border: none; padding: 0; cursor: pointer;">
+            <img src="images/filter.png" alt="Filter Icon" style="width: 24px; height: 24px; object-fit: contain; display: block;">
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div id="filterDropdownMenu" class="multi-layer-dropdown" style="display: none; position: absolute; top: calc(100% + 8px); right: 0; background-color: #ffffff; border: 1.5px solid rgba(21, 19, 31, 0.15); border-radius: var(--radius); min-width: 210px; box-shadow: 0 12px 30px rgba(21, 19, 31, 0.15); z-index: 200; padding: 8px 0;">
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; padding: 6px 16px; letter-spacing: 0.08em; text-align: center;">Filter by</div>
+            <a href="#" class="dropdown-item filter-option" data-category="2d" style="display: flex; justify-content: center; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">2D Animation</a>
+            <a href="#" class="dropdown-item filter-option" data-category="3d" style="display: flex; justify-content: center; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">3D Animation</a>
+            <a href="#" class="dropdown-item filter-option" data-category="motion" style="display: flex; justify-content: center; padding: 8px 14px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">Motion Graphics</a>
+            <div style="border-top: 1px solid rgba(21, 19, 31, 0.1); margin: 6px 0;"></div>
+            <a href="#" class="dropdown-item filter-option" data-category="favs" style="display: flex; justify-content: center; align-items: center; padding: 10px 16px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--void, #15131F); text-decoration: none; text-align: center;">★ Favorites</a>
+          </div>
+        </div>
+
+      </div> <!-- Closes tutorial-search-filter-row -->
+
+      <!-- Active Filter Pills Container (Inside Container) -->
+      <div id="activeFiltersContainer" style="display: flex; flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; gap: 8px; margin: 12px auto 24px auto; max-width: 540px; width: 100%;"></div>
+
+      <!-- No Results Message (Inside Container) -->
+      <div id="noResultsMessage" class="no-results" style="display: none;">
+        <div class="no-results-icon">🔍</div>
+        <h3>No Projects Found</h3>
+        <p>Try adjusting your search terms or selecting a different category filter.</p>
+      </div>
+
+      <!-- Projects Grid (Inside Container) -->
+      <div class="projects-grid" id="projectsGrid">
+        
+        <!-- ==================== 2D ANIMATION: Spirit of the Forest ==================== -->
+<article class="card project-card" data-category="2d" data-id="2d-1">
+  <div class="card-thumb">
+    <!-- YouTube HQ Thumbnail as Default Image -->
+    <img 
+      src="https://img.youtube.com/vi/tBhlc8w2YIM/maxresdefault.jpg" 
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/tBhlc8w2YIM/mqdefault.jpg';"
+      alt="Spirit of the Forest" 
+      class="card-img-static">
+
+    <!-- Hover Preview Video Layer -->
+<video class="card-preview-video" muted loop playsinline preload="metadata">
+  <source src="videos/animationVideo/spirit-of-the-forest.mp4" type="video/mp4">
+</video>
+
+    <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+  </div>
+
+  <div class="card-content">
+    <h3>Spirit of the Forest</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">Toon Boom</span>
+    <span class="meta-tag">TVPaint</span>
+  </div>
+
+    <p>Traditional hand-drawn 24fps character animation focusing on squash, stretch, and fluid dynamics.</p>
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Spirit of the Forest" 
+        data-video="https://www.youtube.com/embed/tBhlc8w2YIM?autoplay=1" 
+        data-desc="An ecological animated fairy tale detailing ancient sacred groves and wetland spirits through hand-drawn animation.">
+        Watch Reel
+      </button>
+    </div>
+  </div>
+</article>
+
+        <article class="card project-card" data-category="2d" data-id="2d-2">
+          <div class="card-thumb">
+            <img src="https://img.youtube.com/vi/DdqXrXEnDDU/maxresdefault.jpg" 
+            onerror="this.onerror=null; this.src='https://img.youtube.com/vi/DdqXrXEnDDU/mqdefault.jpg';"
+            alt="Samurai Sunset" 
+            class="card-img-static">
+            <video class="card-preview-video" muted loop playsinline preload="metadata">
+      <source src="videos/animationVideo/samurai-sunset.mp4" type="video/mp4">
+    </video>
+            <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+          </div>
+          <div class="card-content">
+            <h3>Samurai Sunset</h3>
+
+            <div class="card-meta-tags">
+    <span class="meta-tag">Clip Studio Paint</span>
+    <span class="meta-tag">After Effects</span>
+  </div>
+
+            <p>High-octane sakuga-style action sequence featuring frame-by-frame sword choreography.</p>
+            <div class="card-footer-action">
+              <button class="btn btn-primary open-modal" 
+              data-title="Samurai Sunset" 
+              data-video="https://www.youtube.com/embed/DdqXrXEnDDU?autoplay=1" 
+              data-desc="High-octane sakuga-style action sequence featuring frame-by-frame sword choreography.">Watch Reel</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==================== 2D/3D ANIMATION: Midnight Delivery ==================== -->
+<article class="card project-card" data-category="2d" data-id="2d-3">
+  <div class="card-thumb">
+    <!-- Auto-fetched YouTube High-Quality Thumbnail -->
+    <img 
+      src="https://img.youtube.com/vi/pCIlq5kzTDE/mqdefault.jpg"
+      alt="The Midnight Delivery" 
+      class="card-img-static">
+
+    <!-- Hover Preview Video Layer -->
+<video class="card-preview-video" muted loop playsinline preload="metadata">
+  <source src="videos/animationVideo/the-midnight-delivery.mp4" type="video/mp4">
+</video>
+
+    <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+  </div>
+
+  <div class="card-content">
+    <h3>The Midnight Delivery</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">Blender</span>
+    <span class="meta-tag">After Effects</span>
+  </div>
+
+    <p>An emotional animated short following an urgent night courier through a rain-drenched neon city.</p>
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="The Midnight Delivery" 
+        data-video="https://www.youtube.com/embed/pCIlq5kzTDE?autoplay=1" 
+        data-desc="An emotional animated short film chronicling a high-stakes nighttime delivery run to the Emergency Medical District.">
+        Watch Reel
+      </button>
+    </div>
+  </div>
+</article>
+
+        <!-- ==================== 2D/3D ANIMATION: Mechanical Heart ==================== -->
+<article class="card project-card" data-category="2d" data-id="2d-4">
+  <div class="card-thumb">
+    <!-- Auto-fetched YouTube HQ Thumbnail -->
+    <img 
+      src="https://img.youtube.com/vi/3rjsVccCpXE/maxresdefault.jpg" 
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/3rjsVccCpXE/mqdefault.jpg';"
+      alt="Mechanical Heart - Valve Replacement" 
+      class="card-img-static">
+
+    <!-- Hover Preview Video Layer -->
+<video class="card-preview-video" muted loop playsinline preload="metadata">
+  <source src="videos/animationVideo/mechanical-heart.mp4" type="video/mp4">
+</video>
+
+    <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+  </div>
+
+  <div class="card-content">
+    <h3>Mechanical Heart</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">Medical VFX</span>
+    <span class="meta-tag">3D Animation</span>
+  </div>
+
+    <p>Scientific 3D animation demonstrating cardiac anatomy, transcatheter delivery, and prosthetic valve replacement.</p>
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Mechanical Heart" 
+        data-video="https://www.youtube.com/embed/3rjsVccCpXE?autoplay=1" 
+        data-desc="Educational animation demonstrating modern cutting-edge 3D heart valve replacement mechanisms.">
+        Watch Reel
+      </button>
+    </div>
+  </div>
+</article>
+
+        <!-- ==================== 2D ANIMATION: Chibi Arcade Odyssey ==================== -->
+<article class="card project-card" data-category="2d" data-id="2d-5">
+  <div class="card-thumb">
+    <!-- Auto-fetched YouTube HQ Thumbnail -->
+    <img 
+      src="https://img.youtube.com/vi/pUQIXkR3i1k/mqdefault.jpg"
+      alt="United in Grief || an Arcane Odyssey animatic" 
+      class="card-img-static">
+
+    <!-- Hover Preview Video Layer -->
+<video class="card-preview-video" muted loop playsinline preload="metadata">
+  <source src="videos/animationVideo/arcade-odyssey-animatic.mp4" type="video/mp4">
+</video>
+
+    <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+  </div>
+
+  <div class="card-content">
+    <h3>Arcade Odyssey Animatic</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">Ibis Paint X</span>
+    <span class="meta-tag">CapCut</span>
+  </div>
+
+    <p>A stylized frame-by-frame 2D animatic showcasing dynamic typography, expression keys, and character storytelling.</p>
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Arcade Odyssey Animatic" 
+        data-video="https://www.youtube.com/embed/pUQIXkR3i1k?autoplay=1" 
+        data-desc="A dynamic 2D animatic adaptation created using Ibis Paint X and timed keyframe transitions.">
+        Watch Reel
+      </button>
+    </div>
+  </div>
+</article>
+
+        <!-- ==================== 3D ANIMATION: Cyber Neon 2088 ==================== -->
+<article class="card project-card" data-category="3d" data-id="3d-1">
+  <div class="card-thumb">
+    <!-- Auto-fetched YouTube HQ Thumbnail -->
+    <img 
+      src="https://img.youtube.com/vi/vu4TUHOP4fA/maxresdefault.jpg" 
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/vu4TUHOP4fA/mqdefault.jpg';"
+      alt="Virtual City Animation" 
+      class="card-img-static">
+
+    <!-- Hover Preview Video Layer -->
+<video class="card-preview-video" muted loop playsinline preload="metadata">
+  <source src="videos/animationVideo/cyber-neon-2088.mp4" type="video/mp4">
+</video>
+
+    <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+  </div>
+
+  <div class="card-content">
+    <h3>Cyber Neon 2088</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">Blender</span>
+    <span class="meta-tag">Octane</span>
+  </div>
+
+    <p>A sci-fi virtual city showcase featuring hard-surface modeling, circuit board volumetrics, and holographic lighting sequences.</p>
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Cyber Neon 2088" 
+        data-video="https://www.youtube.com/embed/vu4TUHOP4fA?autoplay=1" 
+        data-desc="A futuristic 3D virtual metropolis animation featuring circuit grid infrastructure and cybernetic towers.">
+        Watch Reel
+      </button>
+    </div>
+  </div>
+</article>
+
+        <!-- ==================== 3D ANIMATION: The Ancient Golem ==================== -->
+<article class="card project-card" data-category="3d" data-id="3d-2">
+  <div class="card-thumb">
+    <!-- Auto-fetched YouTube HQ Thumbnail -->
+    <img 
+      src="https://img.youtube.com/vi/uvmMA-WdQQc/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/uvmMA-WdQQc/mqdefault.jpg';" 
+      alt="Golem - Part 1 (Minecraft Animation)" 
+      class="card-img-static">
+
+    <!-- Hover Preview Video Layer -->
+<video class="card-preview-video" muted loop playsinline preload="metadata">
+  <source src="videos/animationVideo/the-ancient-golem.mp4" type="video/mp4">
+</video>
+
+    <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+  </div>
+
+  <div class="card-content">
+    <h3>The Ancient Golem</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">Blender</span>
+    <span class="meta-tag">Minecraft 3D</span>
+  </div>
+
+    <p>A cinematic 3D action sequence featuring a village guardian golem defending villagers against raid pillagers.</p>
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="The Ancient Golem" 
+        data-video="https://www.youtube.com/embed/uvmMA-WdQQc?autoplay=1" 
+        data-desc="A dynamic 3D story driven combat animation chronicling the heroic stand of an Iron Golem against an invading raiding party.">
+        Watch Reel
+      </button>
+    </div>
+  </div>
+</article>
+
+        <!-- ==================== 3D ANIMATION: Orbital Drift ==================== -->
+<article class="card project-card" data-category="3d" data-id="3d-3">
+  <div class="card-thumb">
+    <!-- Auto-fetched YouTube HQ Thumbnail -->
+    <img 
+      src="https://img.youtube.com/vi/lJbMBvuwJXM/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/lJbMBvuwJXM/mqdefault.jpg';" 
+      alt="Orbital Drift | Official Teaser" 
+      class="card-img-static">
+
+    <!-- Hover Preview Video Layer -->
+<video class="card-preview-video" muted loop playsinline preload="metadata">
+  <source src="videos/animationVideo/orbital-drift.mp4" type="video/mp4">
+</video>
+
+    <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+  </div>
+
+  <div class="card-content">
+    <h3>Orbital Drift</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">Unreal Engine 5</span>
+    <span class="meta-tag">Houdini</span>
+  </div>
+
+    <p>A cinematic sci-fi space teaser featuring planetary rendering, cosmic nebulae, and solo orbital survival.</p>
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Orbital Drift" 
+        data-video="https://www.youtube.com/embed/lJbMBvuwJXM?autoplay=1" 
+        data-desc="Cinematic teaser following a survivor drifting through planetary orbit amidst planetary takeover chaos.">
+        Watch Reel
+      </button>
+    </div>
+  </div>
+</article>
+
+        <!-- ==================== 3D ANIMATION: Mecha Hangar Protocol ==================== -->
+<article class="card project-card" data-category="3d" data-id="3d-4">
+  <div class="card-thumb">
+    <!-- Auto-fetched YouTube HQ Thumbnail -->
+    <img 
+      src="https://img.youtube.com/vi/3vsMHNTQMDU/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/3vsMHNTQMDU/mqdefault.jpg';" 
+      alt="Mech Robot Short Film | Peacemaker Protocol" 
+      class="card-img-static">
+
+    <!-- Hover Preview Video Layer -->
+<video class="card-preview-video" muted loop playsinline preload="metadata">
+  <source src="videos/animationVideo/mecha-hangar-protocol.mp4" type="video/mp4">
+</video>
+
+    <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+  </div>
+
+  <div class="card-content">
+    <h3>Mecha Hangar Protocol</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">Blender</span>
+    <span class="meta-tag">Hard Surface Modeling</span>
+  </div>
+
+    <p>A collaborative 3D robotic assembly film showcasing mechanical rigging, automated robotic arms, and hangar lighting.</p>
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Mecha Hangar Protocol" 
+        data-video="https://www.youtube.com/embed/3vsMHNTQMDU?autoplay=1" 
+        data-desc="Community collaborative sci-fi short film made in Blender featuring mechanical hard-surface rigging and assembly bay animation.">
+        Watch Reel
+      </button>
+    </div>
+  </div>
+</article>
+
+        <!-- ==================== 3D ANIMATION: Isle of Whispers ==================== -->
+<article class="card project-card" data-category="3d" data-id="3d-5">
+  <div class="card-thumb">
+    <!-- Auto-fetched YouTube HQ Thumbnail -->
+    <img 
+      src="https://img.youtube.com/vi/GgipbcJwXKU/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/GgipbcJwXKU/mqdefault.jpg';" 
+      alt="The Whispering Isles | Chapter 1: The First Whisper" 
+      class="card-img-static">
+
+    <!-- Hover Preview Video Layer -->
+<video class="card-preview-video" muted loop playsinline preload="metadata">
+  <source src="videos/animationVideo/the-whispering-isles.mp4" type="video/mp4">
+</video>
+
+    <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+  </div>
+
+  <div class="card-content">
+    <h3>The Whispering Isles</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">Cinema 4D</span>
+    <span class="meta-tag">Stylized 3D</span>
+  </div>
+
+    <p>A magical fantasy adventure short following Aaron and Nova across floating sky islands above the clouds.</p>
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="The Whispering Isles" 
+        data-video="https://www.youtube.com/embed/GgipbcJwXKU?autoplay=1" 
+        data-desc="A magical animated fantasy adventure exploring ancient echo seeds and kingdom memories among the seven floating islands.">
+        Watch Reel
+      </button>
+    </div>
+  </div>
+</article>
+
+        <!-- ==================== MOTION GRAPHICS: Abstract Kinetic Type ==================== -->
+<article class="card project-card" data-category="motion" data-id="mo-1">
+  <div class="card-thumb">
+    <!-- Auto-fetched YouTube HQ Thumbnail -->
+    <img 
+      src="https://img.youtube.com/vi/ZVmdaPgjTrY/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/ZVmdaPgjTrY/mqdefault.jpg';" 
+      alt="3D Kinetic Text Animation – Motion Graphics in After Effects!" 
+      class="card-img-static">
+
+    <!-- Hover Preview Video Layer -->
+<video class="card-preview-video" muted loop playsinline preload="metadata">
+  <source src="videos/animationVideo/abstract-kinetic-type.mp4" type="video/mp4">
+</video>
+
+    <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+  </div>
+
+  <div class="card-content">
+    <h3>Abstract Kinetic Type</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">After Effects</span>
+    <span class="meta-tag">Kinetic Typography</span>
+  </div>
+
+    <p>3D isometric kinetic typography motion graphics created with cubic rotation transitions and synced voice timing.</p>
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Abstract Kinetic Type" 
+        data-video="https://www.youtube.com/embed/ZVmdaPgjTrY?autoplay=1" 
+        data-desc="Motion graphics exploration featuring 3D kinetic typography layouts, isometric perspective cubes, and vector easing in After Effects.">
+        Watch Reel
+      </button>
+    </div>
+  </div>
+</article>
+
+        <!-- ==================== MOTION GRAPHICS: Holo UI Design System ==================== -->
+<article class="card project-card" data-category="motion" data-id="mo-2">
+  <div class="card-thumb">
+    <!-- Auto-fetched YouTube HQ Thumbnail -->
+    <img 
+      src="https://img.youtube.com/vi/MLzYb_FLNuo/maxresdefault.jpg" 
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/MLzYb_FLNuo/mqdefault.jpg';"
+      alt="Futuristic 2050 Sci-Fi Mobile Interface HUD Animation" 
+      class="card-img-static">
+
+    <!-- Hover Preview Video Layer -->
+<video class="card-preview-video" muted loop playsinline preload="metadata">
+  <source src="videos/animationVideo/holo-ui-design-system.mp4" type="video/mp4">
+</video>
+
+    <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+  </div>
+
+  <div class="card-content">
+    <h3>Holo UI Design System</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">After Effects</span>
+    <span class="meta-tag">Illustrator</span>
+  </div>
+
+    <p>Futuristic HUD mobile interface animations, circular radar telemetry, glowing data feeds, and holographic UI transitions.</p>
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Holo UI Design System" 
+        data-video="https://www.youtube.com/embed/MLzYb_FLNuo?autoplay=1" 
+        data-desc="Futuristic 2050 sci-fi mobile interface HUD animation with vertical layout, custom vector dials, and telemetry animations.">
+        Watch Reel
+      </button>
+    </div>
+  </div>
+</article>
+
+        <!-- ==================== MOTION GRAPHICS: Dynamic Brand Identity ==================== -->
+<article class="card project-card" data-category="motion" data-id="mo-3">
+  <div class="card-thumb">
+    <!-- Auto-fetched YouTube HQ Thumbnail -->
+    <img 
+      src="https://img.youtube.com/vi/nx4aB5j2cJo/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/nx4aB5j2cJo/mqdefault.jpg';" 
+      alt="Visual Identity Animation Test - Bringing Branding to Life" 
+      class="card-img-static">
+
+    <!-- Hover Preview Video Layer -->
+<video class="card-preview-video" muted loop playsinline preload="metadata">
+  <source src="videos/animationVideo/dynamic-brand-identity.mp4" type="video/mp4">
+</video>
+
+    <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+  </div>
+
+  <div class="card-content">
+    <h3>Dynamic Brand Identity</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">After Effects</span>
+    <span class="meta-tag">Illustrator</span>
+  </div>
+
+    <p>Slick logo construction grid animations, geometric morphs, and dynamic visual branding sequences for Aerostralia.</p>
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Dynamic Brand Identity" 
+        data-video="https://www.youtube.com/embed/nx4aB5j2cJo?autoplay=1" 
+        data-desc="Motion design test showcasing grid-based logo construction, color palette transitions, and brand identity reveals.">
+        Watch Reel
+      </button>
+    </div>
+  </div>
+</article>
+
+       <!-- ==================== MOTION GRAPHICS: Cyber Glitch Title Intro ==================== -->
+<article class="card project-card" data-category="motion" data-id="mo-4">
+  <div class="card-thumb">
+    <!-- Auto-fetched YouTube HQ Thumbnail -->
+    <img 
+      src="https://img.youtube.com/vi/pQpFebyALV0/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/pQpFebyALV0/mqdefaultt.jpg';" 
+      alt="Hi-Tech Intro" 
+      class="card-img-static">
+
+    <!-- Hover Preview Video Layer -->
+<video class="card-preview-video" muted loop playsinline preload="metadata">
+  <source src="videos/animationVideo/cyber-glitch-title-intro.mp4" type="video/mp4">
+</video>
+
+    <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+  </div>
+
+  <div class="card-content">
+    <h3>Cyber Glitch Title Intro</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">After Effects</span>
+    <span class="meta-tag">Premiere Pro</span>
+  </div>
+
+    <p>High-tech HUD telemetry intro animation featuring futuristic retinal scanning, glitch displacement, and logo reveal bursts.</p>
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Cyber Glitch Title Intro" 
+        data-video="https://www.youtube.com/embed/pQpFebyALV0?autoplay=1" 
+        data-desc="Futuristic high-tech HUD intro sequence utilizing eye scan telemetry, glowing cybernetic meters, and particle title reveals.">
+        Watch Reel
+      </button>
+    </div>
+  </div>
+</article>
+
+        <!-- ==================== MOTION GRAPHICS: Isometric App Explainer ==================== -->
+<article class="card project-card" data-category="motion" data-id="mo-5">
+  <div class="card-thumb">
+    <!-- Auto-fetched YouTube HQ Thumbnail -->
+    <img 
+      src="https://img.youtube.com/vi/nXIJuY0EeH4/maxresdefault.jpg"
+      onerror="this.onerror=null; this.src='https://img.youtube.com/vi/nXIJuY0EeH4/mqdefault.jpg';" 
+      alt="3D Isometric Explainer Animation" 
+      class="card-img-static">
+
+    <!-- Hover Preview Video Layer -->
+<video class="card-preview-video" muted loop playsinline preload="metadata">
+  <source src="videos/animationVideo/isometric-app-explainer.mp4" type="video/mp4">
+</video>
+
+    <button 
+  class="fav-btn" 
+  title="Save to favorites" 
+  aria-label="Save to favorites" 
+  aria-pressed="false">
+  ♥
+</button>
+  </div>
+
+  <div class="card-content">
+    <h3>Isometric App Explainer</h3>
+
+    <div class="card-meta-tags">
+    <span class="meta-tag">3D Motions</span>
+    <span class="meta-tag">Blender / C4D</span>
+  </div>
+
+    <p>3D isometric corporate explainer showcasing data pipeline workflows from consultation and capture to cloud verification.</p>
+    <div class="card-footer-action">
+      <button 
+        class="btn btn-primary open-modal" 
+        data-title="Isometric App Explainer" 
+        data-video="https://www.youtube.com/embed/nXIJuY0EeH4?autoplay=1" 
+        data-desc="3D isometric motion graphics showcasing workflow pipelines including consultation, geospatial data capture, cloud collation, and verification systems.">
+        Watch Reel
+      </button>
+    </div>
+  </div>
+</article>
+
+      </div>
+    </div>
+  </main>
+
+  <div 
+  id="videoModal" 
+  class="modal" 
+  role="dialog" 
+  aria-modal="true" 
+  aria-labelledby="modalTitle" 
+  aria-hidden="true">
+  <div class="modal-backdrop" tabindex="-1"></div>
+  <div class="modal-dialog">
+    <button class="modal-close" aria-label="Close video modal">&times;</button>
+    <div class="modal-media">
+      <iframe id="modalIframe" src="" allow="autoplay; encrypted-media" allowfullscreen title="Project video preview"></iframe>
+    </div>
+    <div class="modal-body">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+</div>
+
+    <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+
+      <!-- Left Column: Branding & Socials -->
+      <div class="footer-info">
+        <div class="footer-brand">PIXEL</div>
+        <p class="muted">Animation &amp; Multimedia Club</p>
+        <div class="social-links">
+          <a href="https://chat.whatsapp.com/Lg8gJl5Xru52lrucpBrVzS" aria-label="Whatsapp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/pixe.lclub?igsi=c2UzMmYwMGY0czd2" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" target="_blank" rel="noopener noreferrer"></i></a>
+          <a href="https://discord.gg/sAC37jRx9b" aria-label="Discord" target=" _blank" rel="noopener noreferrer"><i class="fa-brands fa-discord" target="_blank" rel="noopener noreferrer"></i></a>
+          <a href="https://github.com/PixelAnimationAndMultimeidaClub/Pixel-Club-site-2026" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+
+      <!-- Center/Right: Structured Navigation Columns -->
+      <div class="footer-nav-grid">
+        <div class="footer-col">
+          <span class="label-mono">Explore</span>
+          <a href="animation.html">Animation</a>
+          <a href="tutorials.html">Video Tutorials</a>
+          <a href="product.html">Our Products</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="label-mono">Community</span>
+          <a href="event.html">Upcoming Events</a>
+          <a href="blog.html">Blogs / News</a>
+          <a href="mentor.html">Our Teams</a>
+        </div>
+
+        <div class="footer-next">
+          <span class="label-mono">Up Next</span>
+          <a href="about.html" class="next-link">
+            <span>Learn More About Us</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <span class="label-mono">&copy; 2026 Animation & Multimedia Club. All rights reserved.</span>
+      <span class="label-mono">Built with frame precision</span>
+    </div>
+  </div>
+</footer> 
+
+  <!-- Scripts -->
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="default.js"></script>
+  <script src="animation.js"></script>
+  
+</body>
+</html>

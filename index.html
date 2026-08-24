@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Animation & Multimedia Club</title>
+  <link rel="icon" href="images/icon.svg" type="image/svg+xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@500;700&family=Golos+Text:wght@400..900&family=Press+Start+2P&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <!-- Logo and Brand Name -->
+      <a href="index.html" class="navbar-brand">
+        <!-- Replace logo.png with your actual logo file -->
+        <img src="images/pixel-logo.svg" alt="Logo" class="brand-logo">
+        <div class="brand-text">
+          <span class="brand-title">pixel</span>
+          <span class="brand-subtitle">animation & multimedia club</span>
+        </div>
+      </a>
+      
+      <!-- Hamburger Button for Mobile -->
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="navbar-nav" id="navbar-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        
+        <!-- Explore Dropdown -->
+        <div class="dropdown">
+          <a class="dropdown-toggle" id="explore-btn">Explore ▼</a>
+          <div class="dropdown-menu">
+            <a href="animation.html">Animation</a>
+            <a href="tutorials.html">Video</a>
+            <a href="product.html">Product</a>
+          </div>
+        </div>
+        
+        <a href="event.html">Event</a>
+        <a href="blog.html">Blog</a>
+        <a href="mentor.html">Mentor</a>
+      </div>
+    </div>
+    <!-- Scrub Bar Indicator -->
+    <div class="scrub-bar"><div class="scrub-fill" id="scrubFill"></div></div>
+  </nav>
+<!-- Page Content -->
+<main class="container">
+  <!-- Full-Width Video Section (OUTSIDE Bounded Container) -->
+<div class="hero-visual full-bleed">
+  <div class="hero-video-wrapper">
+    <video 
+      class="hero-video" 
+      autoplay 
+      loop 
+      muted 
+      playsinline 
+      disablePictureInPicture 
+      controlsList="nodownload no-pictures-in-picture"
+    >
+      <source src="videos/refresh.mp4" type="video/mp4">
+      <source src="videos/refresh.mp4" type="video/webm">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="frame-strip" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<!-- Hero Action Button -->
+<section class="section why-join">
+<div class="container">
+    <div class="why-join-layout">
+    <div class="why-join-title">
+        <p class="eyebrow">WHY JOIN PIXEL?</p>
+        <h2>
+        Make something meaningful.
+        </h2>
+
+        <p class="why-join-intro">Learn, collaborate and grow through creative experiences
+        with people who share your passion.</p>
+
+        <br>
+        <button class="btn btn-primary" id="openJoinModal">Join the community</button>
+    </div>
+
+    <div class="why-features">
+        <article class="why-feature">
+        <span class="why-feature-number">01</span>
+        <div class="why-feature-content">
+            <h3>HANDS-ON LEARNING</h3>
+            <p>Develop practical creative skills through workshops and shared experiences.</p>
+        </div>
+        </article>
+        <article class="why-feature">
+        <span class="why-feature-number">02</span>
+        <div class="why-feature-content">
+            <h3>COLLABORATIVE CREATIVITY</h3>
+            <p>Meet fellow creators, exchange ideas and bring concepts to life together.</p>
+        </div>
+        </article>
+        <article class="why-feature">
+        <span class="why-feature-number">03</span>
+        <div class="why-feature-content">
+            <h3>CREATIVE GROWTH</h3>
+            <p>Explore new possibilities, build confidence and develop your own creative voice.</p>
+        </div>
+        </article>
+        <div class="why-join-closing">
+        <span>Your next creative idea could start here.</span>
+        </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- News & Insights Section -->
+<section id="news" class="section section-dark news-section">
+  <div class="container">
+    <!-- Section Header -->
+    <br>
+    <div class="news-header">
+      <div>
+        <p class="eyebrow">NEWS & INSIGHTS</p>
+        <h2>Latest from the lab.</h2>
+      </div>
+      <a href="blog.html" class="btn btn-secondary">View All Articles</a>
+    </div>
+
+    <!-- News Grid Layout -->
+    <div class="news-grid">
+      
+      <!-- Featured Main Post -->
+      <a href="https://asia.siggraph.org/2026/submissions/computer-animation-festival/" target="_blank" rel="noopener noreferrer" class="news-card news-featured news-card-link">
+        <div class="news-image-wrapper">
+          <span class="news-badge">Previous</span>
+          <img src="images/SIGGRAPH_ASIA_2026.png" alt="SIGGRAPH ASIA 2026" class="news-img">
+        </div>
+        <div class="news-content">
+          <div class="news-meta">
+            <span class="label-mono">2026-08-18</span>
+            <span class="dot">•</span>
+            <span class="label-mono">ANNOUNCEMENTS</span>
+          </div>
+          <h3>SIGGRAPH Asia 2026 Computer Animation Festival</h3>
+          <p class="muted">Official call for submissions showcasing premier global computer animation, VFX, and interactive media works.</p>
+          <span class="news-link">Read Full Story <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- Secondary Posts List -->
+      <div class="news-list">
+        
+        <a href="https://cgcookie.com/courses/core-fundamentals-of-lighting-in-blender" target="_blank" rel="noopener noreferrer" class="news-card news-compact news-card-link">
+          <div class="news-meta">
+            <span class="label-mono">2026-08-01</span>
+            <span class="dot">•</span>
+            <span class="label-mono">INSIGHTS & GUIDES</span>
+          </div>
+          <h4>CORE: Fundamentals of Lighting in Blender</h4>
+          <p class="muted">A deep dive into Cycles path tracing, EEVEE Next, light positioning, and shadow linking by CG Cookie.</p>
+          <span class="news-link">Read Story <i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+
+        <a href="https://s2025.siggraph.org/" target="_blank" rel="noopener noreferrer" class="news-card news-compact news-card-link">
+          <div class="news-meta">
+            <span class="label-mono">2025-08-14</span>
+            <span class="dot">•</span>
+            <span class="label-mono">EVENT RECAPS</span>
+          </div>
+          <h4>SIGGRAPH 2025 Conference Highlights</h4>
+          <p class="muted">A look back at groundbreaking graphics research, real-time rendering demos, and keynote highlights from Vancouver.</p>
+          <span class="news-link">Read Story <i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+
+        <a href="https://josephnilo.com/blog/color-grading-in-premiere-pro-the-ultimate-guide-to-the-lumetri-color-panel/" target="_blank" rel="noopener noreferrer" class="news-card news-compact news-card-link">
+          <div class="news-meta">
+            <span class="label-mono">2026-06-08</span>
+            <span class="dot">•</span>
+            <span class="label-mono">INSIGHTS & GUIDES</span>
+          </div>
+          <h4>Lumetri Color in Premiere Pro: Practical Guide</h4>
+          <p class="muted">Master color correction scopes, white balance adjustments, LUT workflows, and final export checks.</p>
+          <span class="news-link">Read Story <i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Upcoming Events Section — 2-Column Grid -->
+<section id="events" class="section events-section">
+  <br>
+  <div class="container">
+    <div class="events-layout">
+
+      <!-- Left Column: Sticky Title & Description -->
+      <div class="events-title">
+        <p class="eyebrow">MARK YOUR CALENDAR</p>
+        <h2>Upcoming Events &amp; Workshops</h2>
+        <p class="events-intro">Join us for hands-on sessions, creative jams, and live guest speaker streams.</p>
+        <a href="event.html" class="btn btn-primary events-cta">View All Events <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <!-- Right Column: Stacked Event Cards -->
+      <div class="events-list">
+
+        <!-- Card 1 -->
+        <a href="event.html#bootcamp" class="event-card event-card-link">
+          <div class="event-date-badge">
+            <span class="event-month">OCT</span>
+            <span class="event-day">24</span>
+          </div>
+          <div class="event-details">
+            <div class="event-meta">
+              <span class="label-mono"><i class="fa-regular fa-clock"></i> 2:00 PM - 4:30 PM</span>
+              <span class="dot">•</span>
+              <span class="label-mono"><i class="fa-brands fa-discord"></i> DISCORD LIVE</span>
+            </div>
+            <h3>2D Frame-by-Frame Animation</h3>
+            <p class="muted">Learn the 12 principles of animation using digital light tables and storyboarding techniques.</p>
+            <div class="event-footer">
+              <span class="event-tag">WORKSHOP</span>
+              <div class="event-actions">
+                <span class="btn btn-secondary btn-sm">More Info</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="event.html#film-jam" class="event-card event-card-link">
+          <div class="event-date-badge">
+            <span class="event-month">NOV</span>
+            <span class="event-day">02</span>
+          </div>
+          <div class="event-details">
+            <div class="event-meta">
+              <span class="label-mono"><i class="fa-regular fa-clock"></i> 10:00 AM - 12:00 PM</span>
+              <span class="dot">•</span>
+              <span class="label-mono"><i class="fa-brands fa-discord"></i> DISCORD LIVE</span>
+            </div>
+            <h3>Color Grading & Timeline Editing</h3>
+            <p class="muted">Master multi-track video editing, LUTs, and dynamic speed ramping in Premiere Pro.</p>
+            <div class="event-footer">
+              <span class="event-tag tag-yellow">Tutorial</span>
+              <div class="event-actions">
+                <span class="btn btn-secondary btn-sm">More Info</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="event.html#vfx-talk" class="event-card event-card-link">
+          <div class="event-date-badge">
+            <span class="event-month">NOV</span>
+            <span class="event-day">15</span>
+          </div>
+          <div class="event-details">
+            <div class="event-meta">
+              <span class="label-mono"><i class="fa-regular fa-clock"></i> 1:00 PM - 5:00 PM</span>
+              <span class="dot">•</span>
+              <span class="label-mono"><i class="fa-brands fa-discord"></i> DISCORD LIVE</span>
+            </div>
+            <h3>3D Character Rigging in Blender</h3>
+            <p class="muted">An intensive session covering mesh topology, weight painting, and inverse kinematics.</p>
+            <div class="event-footer">
+              <span class="event-tag">Bootcamp</span>
+              <div class="event-actions">
+                <span class="btn btn-secondary btn-sm">More Info</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Hidden Join Modal Overlay -->
+<div id="joinModal" class="modal-overlay">
+<div class="modal-card">
+<button class="modal-close" id="closeJoinModal" aria-label="Close">&times;</button>
+<h2>Join the Community</h2>
+<p class="muted">Fill out the form below to register as an official member of PIXEL.</p>
+
+<!-- Success Banner Card -->
+<div id="successCard" class="success-banner" style="display: none;">
+<i class="fa-solid fa-circle-check"></i>
+<div>
+    <strong>Registration Successful!</strong>
+    <p>Welcome to PIXEL. We have saved your spot.</p>
+</div>
+</div>
+
+<form id="joinForm" class="join-form">
+<div class="form-group">
+    <label class="label-mono" for="fullName">Full Name</label>
+    <input type="text" id="fullName" name="fullName" placeholder="e.g. Alex Mercer" required>
+</div>
+
+<div class="form-group">
+    <label class="label-mono" for="email">Email Address</label>
+    <input type="email" id="email" name="email" placeholder="alex@example.com" required>
+</div>
+
+<div class="form-group">
+    <label class="label-mono" for="interest">Primary Interest</label>
+    <select id="interest" name="interest" required>
+    <option value="" disabled selected>Select your field</option>
+    <option value="Animation">Animation</option>
+    <option value="Video Editing">Video Editing</option>
+    <option value="Digital Art">Digital Art &amp; Design</option>
+    <option value="Product Design">Product Design</option>
+    </select>
+</div>
+
+<button type="submit" class="btn btn-primary" id="submitBtn">Submit Registration</button>
+</form>
+</div>
+</div>
+
+</main>
+    <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+
+      <!-- Left Column: Branding & Socials -->
+      <div class="footer-info">
+        <div class="footer-brand">PIXEL</div>
+        <p class="muted">Animation &amp; Multimedia Club</p>
+        <div class="social-links">
+          <a href="https://chat.whatsapp.com/Lg8gJl5Xru52lrucpBrVzS" aria-label="Whatsapp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/pixe.lclub?igsi=c2UzMmYwMGY0czd2" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" target="_blank" rel="noopener noreferrer"></i></a>
+          <a href="https://discord.gg/sAC37jRx9b" aria-label="Discord" target=" _blank" rel="noopener noreferrer"><i class="fa-brands fa-discord" target="_blank" rel="noopener noreferrer"></i></a>
+          <a href="https://github.com/PixelAnimationAndMultimeidaClub/Pixel-Club-site-2026" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+
+      <!-- Center/Right: Structured Navigation Columns -->
+      <div class="footer-nav-grid">
+        <div class="footer-col">
+          <span class="label-mono">Explore</span>
+          <a href="animation.html">Animation</a>
+          <a href="tutorials.html">Video Tutorials</a>
+          <a href="product.html">Our Products</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="label-mono">Community</span>
+          <a href="event.html">Upcoming Events</a>
+          <a href="blog.html">Blogs / News</a>
+          <a href="mentor.html">Our Teams</a>
+        </div>
+
+        <div class="footer-next">
+          <span class="label-mono">Up Next</span>
+          <a href="about.html" class="next-link">
+            <span>Learn More About Us</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <span class="label-mono">&copy; 2026 Animation & Multimedia Club. All rights reserved.</span>
+      <span class="label-mono">Built with frame precision</span>
+    </div>
+  </div>
+</footer> 
+
+  <!-- Scripts -->
+  <script src="default.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
