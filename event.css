@@ -437,6 +437,7 @@ main.section,
   color: #1c1a29;
   font-size: 1.6rem;
   line-height: 1.15;
+  font-weight: 700;
 }
 
 .grid .card h3 + div {

@@ -86,19 +86,23 @@
 
 .pixel-logo-text h3 {
   font-family: var(--font-heading);
-  font-size: 1.8rem;
-  color: var(--ink);
-  letter-spacing: 0.05em;
-  margin: 0;
-  line-height: 1;
+  font-weight: 1000;
+  color: var(--yellow);
+  font-size: 2rem;
+  line-height:0;
+  text-transform: uppercase;
 }
 
 .pixel-logo-text span {
-  font-size: 0.6rem;
-  color: var(--mist);
-  display: block;
-  margin-top: 4px;
+ font-family: var(--font-mono);
+  color: var(--sky-blue);
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 5px;
+  line-height: 1;
 }
+在about.css replace 这两个
 
 /* --- Sequential Bullet Strip --- */
 .bullet-sequence {
