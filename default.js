@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* ==========================================================================
-     3. INTRO VIDEO ANIMATION (FIXED FOR MOBILE & DESKTOP)
+ /* ==========================================================================
+     3. INTRO VIDEO ANIMATION (FULLY FLEXIBLE FOR ALL DISPLAY SIZES)
    ========================================================================== */
   const navigationEntries = performance.getEntriesByType('navigation');
   const isRefresh = navigationEntries.length > 0 && navigationEntries[0].type === 'reload';
@@ -45,6 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
       transition: opacity 0.5s ease;
       pointer-events: none;
       overflow: hidden;
+      padding: 20px;
+      box-sizing: border-box;
     `;
 
     const video = document.createElement('video');
@@ -54,25 +56,44 @@ document.addEventListener("DOMContentLoaded", () => {
     video.muted = true;
     video.defaultMuted = true;
     video.autoplay = true;
-    video.playsInline = true; // Crucial for iOS
+    video.playsInline = true;
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
     video.setAttribute('muted', '');
     
-    // Responsive fit: preserve full visibility on mobile screens
-    const isMobile = window.innerWidth <= 768;
+    // Dynamic sizing function for true responsiveness
+    const updateVideoFit = () => {
+      const screenAspect = window.innerWidth / window.innerHeight;
+      const videoAspect = video.videoWidth && video.videoHeight 
+        ? video.videoWidth / video.videoHeight 
+        : 16 / 9; // Fallback to 16:9 standard ratio
+
+      // If screen aspect matches video closely, cover; otherwise contain to avoid text cropping
+      if (Math.abs(screenAspect - videoAspect) < 0.2) {
+        video.style.objectFit = 'cover';
+      } else {
+        video.style.objectFit = 'contain';
+      }
+    };
+
     video.style.cssText = `
       width: 100%;
       height: 100%;
-      max-width: 100vw;
-      max-height: 100vh;
-      object-fit: ${isMobile ? 'contain' : 'cover'};
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: object-fit 0.3s ease;
     `;
+
+    // Adjust fit when video metadata loads and on screen resize/orientation change
+    video.addEventListener('loadedmetadata', updateVideoFit);
+    window.addEventListener('resize', updateVideoFit);
 
     overlay.appendChild(video);
     document.body.appendChild(overlay);
 
     const removeOverlay = () => {
+      window.removeEventListener('resize', updateVideoFit);
       if (overlay.parentNode) {
         overlay.style.opacity = '0';
         setTimeout(() => overlay.remove(), 500);
@@ -83,13 +104,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        // If mobile browser blocks autoplay, immediately dismiss overlay instead of breaking
         removeOverlay();
       });
     }
 
     video.addEventListener('ended', removeOverlay);
-    video.addEventListener('error', removeOverlay); // Fallback on load error
+    video.addEventListener('error', removeOverlay);
 
     // Safety fallback after 3s
     setTimeout(removeOverlay, 3000);
