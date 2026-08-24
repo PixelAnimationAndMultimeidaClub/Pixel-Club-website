@@ -13,7 +13,7 @@
 :root {
   /* Colors */
   --void: #15131F;         /* dark bg — hero, nav, footer */
-  --cloud: #F6F4EF;        /* light bg — content sections */
+  --cloud:#F3EED9 !important; /*#F6F4EF;        /* light bg — content sections */
   --sky-blue: #3DB8FF;        /* primary accent — CTAs, links, active states */
   --sky-blue-dark: #1A93D6;   /* hover/pressed state for sky blue */
   --yellow: #FFD93D;         /* secondary accent — highlights, hover ONLY, never backgrounds */
@@ -134,8 +134,8 @@ a:hover { color: var(--sky-blue-dark); }
 }
 
 .brand-logo {
-  height: 36px;
-  margin-right: 12px;
+  height: 60px;
+  margin-right: 36px;
 }
 
 .brand-text {
@@ -148,7 +148,7 @@ a:hover { color: var(--sky-blue-dark); }
   font-family: var(--font-heading);
   font-weight: 700;
   color: var(--cloud);
-  font-size: 1.25rem;
+  font-size: 2.5rem;
   line-height: 1;
   text-transform: uppercase;
 }
@@ -156,7 +156,7 @@ a:hover { color: var(--sky-blue-dark); }
 .brand-subtitle {
   font-family: var(--font-mono);
   color: var(--sky-blue);
-  font-size: 0.55rem;
+  font-size: 1.5rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-top: 5px;
@@ -500,6 +500,9 @@ a:hover { color: var(--sky-blue-dark); }
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 14px;
 }
+.cookie-banner p{
+  color:var(--yellow)
+}
 
 .cookie-banner-content {
   display: flex;
@@ -508,7 +511,6 @@ a:hover { color: var(--sky-blue-dark); }
 }
 
 .cookie-banner-content p {
-  color:#EAE7DF;
   margin: 0;
   line-height: 1.4;
 }

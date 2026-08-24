@@ -211,7 +211,6 @@ join-card {
 
 .why-join {
   padding: 60px 0;
-  background: var(--cloud, #F7F7FB);
 }
 
 @media (min-width: 768px) {
@@ -554,7 +553,7 @@ a.news-card-link:hover .news-link {
    ========================================================================== */
 
 .events-section {
-  background: var(--cloud, #F7F7FB);
+  background: var(--cloud);
   padding: 80px 0;
   border-top: 1px solid var(--cloud-dim, #E2E2EC);
 }
