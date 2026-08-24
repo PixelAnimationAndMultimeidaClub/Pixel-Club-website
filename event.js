@@ -7,10 +7,13 @@ function openRegistration(workshop, date, time) {
     document.getElementById("selectedWorkshop").textContent = workshop;
     document.getElementById("selectedDate").textContent = "DATE: " + date;
     document.getElementById("selectedTime").textContent = "TIME: " + time;
+
+    registrationForm.style.display = "block";
+    successMessage.style.display = "none";
+
     registrationModal.classList.add("show");
     document.body.style.overflow = "hidden";
 }
-
 // Close registration form
 function closeRegistration() {
   registrationModal.classList.remove("show");
