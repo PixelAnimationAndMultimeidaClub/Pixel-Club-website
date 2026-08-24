@@ -23,56 +23,74 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ==========================================================================
-     3. INTRO VIDEO ANIMATION (FIRST VISIT & REFRESH ONLY)
-     ========================================================================== */
-  const navigationEntries = performance.getEntriesByType('navigation');
-  const isRefresh = navigationEntries.length > 0 && navigationEntries[0].type === 'reload';
-  const hasVisited = sessionStorage.getItem('pixel_visited');
+     3. INTRO VIDEO ANIMATION (FIXED FOR MOBILE & DESKTOP)
+   ========================================================================== */
+const navigationEntries = performance.getEntriesByType('navigation');
+const isRefresh = navigationEntries.length > 0 && navigationEntries[0].type === 'reload';
+const hasVisited = sessionStorage.getItem('pixel_visited');
 
-  if (isRefresh || !hasVisited) {
-    sessionStorage.setItem('pixel_visited', 'true');
+if (isRefresh || !hasVisited) {
+  sessionStorage.setItem('pixel_visited', 'true');
 
-    const overlay = document.createElement('div');
-    overlay.id = 'page-transition-overlay';
-    overlay.style.cssText = `
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      background: #0f0d18;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.5s ease;
-    `;
+  const overlay = document.createElement('div');
+  overlay.id = 'page-transition-overlay';
+  overlay.style.cssText = `
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #0f0d18;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  `;
 
-    const video = document.createElement('video');
-    video.src = 'videos/pixel.mp4';
-    video.autoplay = true;
-    video.muted = true;
-    video.playsInline = true;
-    video.style.cssText = `
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    `;
+  const video = document.createElement('video');
+  video.src = 'videos/pixel.mp4';
+  
+  // Mobile autoplay requirements
+  video.muted = true;
+  video.defaultMuted = true;
+  video.autoplay = true;
+  video.playsInline = true; // Crucial for iOS
+  video.setAttribute('playsinline', '');
+  video.setAttribute('webkit-playsinline', '');
+  video.setAttribute('muted', '');
+  
+  video.style.cssText = `
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  `;
 
-    overlay.appendChild(video);
-    document.body.appendChild(overlay);
+  overlay.appendChild(video);
+  document.body.appendChild(overlay);
 
-    video.addEventListener('ended', () => {
+  const removeOverlay = () => {
+    if (overlay.parentNode) {
       overlay.style.opacity = '0';
       setTimeout(() => overlay.remove(), 500);
-    });
+    }
+  };
 
-    setTimeout(() => {
-      if (document.body.contains(overlay)) {
-        overlay.style.opacity = '0';
-        setTimeout(() => overlay.remove(), 500);
-      }
-    }, 3000);
-  } else {
-    sessionStorage.setItem('pixel_visited', 'true');
+  // Attempt programmatically starting the video for strict mobile WebKit
+  const playPromise = video.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      // If mobile browser blocks autoplay, immediately dismiss overlay instead of breaking
+      removeOverlay();
+    });
   }
+
+  video.addEventListener('ended', removeOverlay);
+  video.addEventListener('error', removeOverlay); // Fallback on load error
+
+  // Safety fallback after 3s
+  setTimeout(removeOverlay, 3000);
+} else {
+  sessionStorage.setItem('pixel_visited', 'true');
+}
 
   /* ==========================================================================
      4. COOKIE CONSENT MODULE (Vanilla JS - No jQuery dependency required)
