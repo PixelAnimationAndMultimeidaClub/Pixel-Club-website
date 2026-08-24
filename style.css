@@ -508,6 +508,7 @@ a:hover { color: var(--sky-blue-dark); }
 }
 
 .cookie-banner-content p {
+  color:#EAE7DF;
   margin: 0;
   line-height: 1.4;
 }
