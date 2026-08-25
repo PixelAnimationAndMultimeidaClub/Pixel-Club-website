@@ -25,30 +25,104 @@ $(function () {
   let isScrollTicking = false;
 
   // Optimized Cookie Helpers
-  function setCookie(name, value, days) {
+const CookieManager = {
+  // Flag tracking consent (Defaults to false until user accepts)
+  hasConsent: false,
+
+  // Called when user clicks "Accept" or "Reject" on your banner
+  setConsent(consentGiven) {
+    this.hasConsent = consentGiven;
+    
+    if (consentGiven) {
+      // If user accepts, save current in-memory favorites to persistent cookie
+      this.set('pixel_favs', JSON.stringify(favorites));
+    } else {
+      // If user rejects or revokes consent, wipe existing cookies
+      this.delete('pixel_favs');
+    }
+  },
+
+  // Dynamic set method with built-in consent check
+  set(name, value, days = 30) {
+    if (!this.hasConsent) {
+      console.warn(`[CookieManager] Skipping cookie "${name}": Consent not granted.`);
+      return false;
+    }
+
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
     const secure = location.protocol === 'https:' ? '; Secure' : '';
     document.cookie = `${name}=${encodeURIComponent(value)}; expires=${date.toUTCString()}; path=/; SameSite=Lax${secure}`;
-  }
+    return true;
+  },
 
-  function getCookie(name) {
+  // Read cookies safely
+  get(name) {
     const matches = document.cookie.match(new RegExp(
       `(?:^|; )${name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1')}=([^;]*)`
     ));
     return matches ? decodeURIComponent(matches[1]) : null;
-  }
+  },
 
-  let favorites = [];
+  // Clear/Delete cookie helper
+  delete(name) {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  }
+};
+
+const FAVS_KEY = 'pixel_favs';
+
+// Safely read saved favorites without auto-creating cookies on startup
+function loadFavoritesOnStart() {
   try {
-    favorites = JSON.parse(getCookie(FAVS_KEY) || '[]');
+    const savedData = CookieManager.get(FAVS_KEY);
+    return savedData ? JSON.parse(savedData) : [];
   } catch (error) {
-    favorites = [];
+    console.error("Failed to parse favorites cookie:", error);
+    return [];
+  }
+}
+
+// In-Memory global state (Always works during active session)
+let favorites = loadFavoritesOnStart();
+
+// Toggle item in favorites array and save according to consent
+function toggleFavorite(itemId) {
+  const index = favorites.indexOf(itemId);
+  
+  if (index === -1) {
+    favorites.push(itemId);
+  } else {
+    favorites.splice(index, 1);
   }
 
-  function escapeHtml(value) {
-    return $('<div>').text(value || '').html();
-  }
+  // Attempt to write cookie; safely degrades to active tab memory if consent = false
+  CookieManager.set(FAVS_KEY, JSON.stringify(favorites));
+  
+  // Update your UI here if needed
+  renderFavoritesUI();
+}
+
+// Helper utility for safe HTML rendering
+function escapeHtml(value) {
+  return $('<div>').text(value || '').html();
+}
+
+function renderFavoritesUI() {
+  console.log("Current favorites (In-Memory):", favorites);
+}
+
+// Connect these to your banner buttons in your UI logic:
+
+function onAcceptCookiesClick() {
+  CookieManager.setConsent(true);
+  console.log("User accepted cookies. State saved to persistent cookie storage.");
+}
+
+function onRejectCookiesClick() {
+  CookieManager.setConsent(false);
+  console.log("User rejected cookies. Running in active session-memory mode.");
+}
 
   // Dropdown Controls
   function closeDropdown() {
