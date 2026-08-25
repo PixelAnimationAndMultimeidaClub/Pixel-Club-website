@@ -117,58 +117,80 @@ document.addEventListener("DOMContentLoaded", () => {
     sessionStorage.setItem('pixel_visited', 'true');
   }
 
-  /* ==========================================================================
-     4. COOKIE CONSENT MODULE (Vanilla JS - No jQuery dependency required)
-     ========================================================================== */
-  function initCookieConsent() {
-    const CONSENT_KEY = 'site_cookie_consent';
-    const consent = localStorage.getItem(CONSENT_KEY);
+  * ==========================================================================
+   4. COOKIE CONSENT MODULE (Vanilla JS - Global Page Setting)
+   ========================================================================== */
+function initCookieConsent() {
+  const CONSENT_KEY = 'site_cookie_consent';
+  const consent = localStorage.getItem(CONSENT_KEY);
 
-    // If user already decided, DO NOT show the banner
-    if (consent) {
-      return;
-    }
-
-    let banner = document.getElementById('cookie-banner');
-
-    // Auto-inject HTML container if missing from your HTML file
-    if (!banner) {
-      banner = document.createElement('div');
-      banner.id = 'cookie-banner';
-      banner.className = 'cookie-banner';
-      banner.innerHTML = `
-        <div class="cookie-banner-content">
-          <p>We use cookies to improve your experience. Choose your preferences below.</p>
-          <div class="cookie-banner-actions">
-            <button type="button" id="accept-cookies" class="cookie-btn cookie-accept">Accept</button>
-            <button type="button" id="reject-cookies" class="cookie-btn cookie-reject">Reject</button>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(banner);
-    }
-
-    // Un-hide banner safely only for first-time visitors
-    banner.classList.remove('hidden');
-    banner.style.display = 'block';
-
-    // Event listener for Accept
-    document.addEventListener('click', (event) => {
-      if (event.target && event.target.id === 'accept-cookies') {
-        localStorage.setItem(CONSENT_KEY, 'accepted');
-        banner.style.display = 'none';
-      }
-    });
-
-    // Event listener for Reject
-    document.addEventListener('click', (event) => {
-      if (event.target && event.target.id === 'reject-cookies') {
-        localStorage.setItem(CONSENT_KEY, 'rejected');
-        banner.style.display = 'none';
+  // Helper: Dynamically swap YouTube domain based on user consent
+  function handleYouTubeIframes(useCookies) {
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach((iframe) => {
+      const src = iframe.getAttribute('src') || iframe.getAttribute('data-src');
+      if (src && src.includes('youtube')) {
+        if (useCookies) {
+          // Standard domain (allows tracking cookies)
+          iframe.src = src.replace('youtube-nocookie.com', 'youtube.com');
+        } else {
+          // Privacy-enhanced domain (blocks tracking cookies)
+          iframe.src = src.replace('youtube.com', 'youtube-nocookie.com');
+        }
       }
     });
   }
 
-  // Run cookie check
-  initCookieConsent();
-});
+  // If user already made a decision on a previous visit
+  if (consent) {
+    handleYouTubeIframes(consent === 'accepted');
+    return;
+  }
+
+  // First visit (no choice made yet): Default YouTube to privacy-enhanced mode
+  handleYouTubeIframes(false);
+
+  let banner = document.getElementById('cookie-banner');
+
+  // Auto-inject HTML container if missing from your HTML file
+  if (!banner) {
+    banner = document.createElement('div');
+    banner.id = 'cookie-banner';
+    banner.className = 'cookie-banner';
+    banner.innerHTML = `
+      <div class="cookie-banner-content">
+        <p>We use cookies to improve your experience. Choose your preferences below.</p>
+        <div class="cookie-banner-actions">
+          <button type="button" id="accept-cookies" class="cookie-btn cookie-accept">Accept</button>
+          <button type="button" id="reject-cookies" class="cookie-btn cookie-reject">Reject</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(banner);
+  }
+
+  // Un-hide banner safely only for first-time visitors
+  banner.classList.remove('hidden');
+  banner.style.display = 'block';
+
+  // Event listener for Accept
+  document.addEventListener('click', (event) => {
+    if (event.target && event.target.id === 'accept-cookies') {
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      handleYouTubeIframes(true); // Load standard YouTube cookies
+      banner.style.display = 'none';
+    }
+  });
+
+  // Event listener for Reject
+  document.addEventListener('click', (event) => {
+    if (event.target && event.target.id === 'reject-cookies') {
+      localStorage.setItem(CONSENT_KEY, 'rejected');
+      handleYouTubeIframes(false); // Keep YouTube in no-cookie mode
+      banner.style.display = 'none';
+    }
+  });
+}
+
+// Run cookie check
+initCookieConsent();
